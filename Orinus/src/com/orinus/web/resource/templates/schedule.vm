@@ -1,0 +1,79 @@
+﻿<html>
+<head>
+  <title>$lang.schedule_page_title | $lang.site_title</title>
+  <script src="$ROOT/scripts/jquery-1.7.2.min.js"></script>
+  <script>
+var ROOT = '$ROOT';
+
+function goClose() {
+  location = ROOT + '/edit-file.jsb?eid=$data.eid&fid=$data.fid';
+}
+
+function goSave() {
+  $('#form').submit();
+}
+
+  </script>
+  <link rel="stylesheet" type="text/css" href="$ROOT/styles/common.css" media="all"/>
+  <style>
+#schedule {
+  width: 300px;
+  margin: 20px auto;
+  height: 300px;
+  border: solid 1px gainsboro;
+}
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="topbar">
+      <center>
+      <a href="javascript:return false;" class="button" onclick="goSave()">$lang.schedule_save</a>
+      <a href="javascript:return false;" class="button" onclick="goClose()">$lang.schedule_close</a>
+      </center>
+    </div>
+    <div id="workspace">
+      <form id="form" action="$ROOT/schedule.jsb?eid=$data.eid&fid=$data.fid" method="post">
+      <div id="schedule" class="form">
+        <div class="row first-row">
+$lang.schedule_minute
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="minute" value="$data.minute" />
+        </div>
+        <div class="row">
+$lang.schedule_hour
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="hour" value="$data.hour" />
+        </div>
+        <div class="row">
+$lang.schedule_day
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="day" value="$data.day" />
+        </div>
+        <div class="row">
+$lang.schedule_month
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="month" value="$data.month" />
+        </div>
+        <div class="row">
+$lang.schedule_year
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="year" value="$data.year" />
+        </div>
+        <div class="row">
+$lang.schedule_timeout
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="timeout" value="$data.timeout" />
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+﻿<html>
+<head>
+  <title>$lang.home_page_title_online | $lang.site_title</title>
+  <script src="$ROOT/scripts/jquery-1.7.2.min.js"></script>
+  <script>
+var ROOT = '$ROOT';
+var DEFAULT_ENGINE = '$data.default_engine';
+
+function goRestart() {
+}
+
+function goSettings() {
+  location = ROOT + '/settings.jsb';
+}
+
+function goOpen() {
+  var eid = getFirstChecked();
+  if (eid == '') return;
+  location = ROOT + '/open-engine.jsb?eid=' + eid;
+}
+
+function goEdit() {
+  var eid = getFirstChecked();
+  if (eid == '' || eid == DEFAULT_ENGINE) return;
+  location = ROOT + '/edit-engine.jsb?eid=' + eid;
+}
+
+function goDelete() {
+  var ids = getAllChecked();
+  if (ids == '') return;
+  var tag = $('#form .stage');
+  tag.val('delete');
+  tag = $('#form .ids');
+  tag.val(ids);
+  $('#form').submit();
+}
+
+function goAdd() {
+  location = ROOT + '/add-engine.jsb';
+}
+
+function goExit() {
+  var tag = $('#form .stage');
+  tag.val('exit');
+  $('#form').submit();
+}
+
+function getFirstChecked() {
+  var tags = $('.table .row .checkbox');
+  for (var i = 0; i < tags.size(); i++) {
+    if (tags[i].checked) {
+      return tags[i].value;
+    }
+  }
+  return '';
+}
+
+function getAllChecked() {
+  var ids = '';
+  var tags = $('.table .row .checkbox');
+  for (var i = 0; i < tags.size(); i++) {
+    if (tags[i].checked) {
+      if (tags[i].value != DEFAULT_ENGINE) {
+        if (ids.length > 0) ids += '|';
+        ids += tags[i].value;
+      }
+    }
+  }
+  return ids;
+}
+
+  </script>
+  <link rel="stylesheet" type="text/css" href="$ROOT/styles/common.css" media="all"/>
+  <style>
+#engine-list {
+  width: 750px;
+  margin: 10px auto;
+}
+.C0 {
+  width: 50px;
+  text-align: center;
+}
+.C1 {
+  width: 300px;
+}
+.C2 {
+  width: 300px;
+}
+.C3 {
+  width: 100px;
+}
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="topbar">
+      <center>
+      <a style="display: none" href="javascript:return false;" class="button" onclick="goRestart()">$lang.home_restart</a>
+      <a href="javascript:return false;" class="button" onclick="goSettings()">$lang.home_settings</a>
+      <a href="javascript:return false;" class="button" onclick="goOpen()">$lang.home_open</a>
+      <a href="javascript:return false;" class="button" onclick="goEdit()">$lang.home_edit</a>
+      <a href="javascript:return false;" class="button" onclick="goDelete()">$lang.home_delete</a>
+      <a href="javascript:return false;" class="button" onclick="goAdd()">$lang.home_add</a>
+      <a href="javascript:return false;" class="button" onclick="goExit()">$lang.home_exit</a>
+      </center>
+    </div>
+    <div id="workspace">
+      <form id="form" action="$ROOT/index.jsb" method="post">
+        <input type="hidden" class="stage" name="stage" />
+        <input type="hidden" class="ids" name="ids" />
+      </form>
+      <div id="engine-list" class="table">
+        <table width="100%" cellspacing="0" cellpadding="0">
+          <tr class="header">
+            <td class="cell C0">
+&nbsp;
+            </td>
+            <td class="cell C1">
+$lang.home_column_domain
+            </td>
+            <td class="cell C2">
+$lang.home_column_folder
+            </td>
+            <td class="cell C3">
+$lang.home_column_quota
+            </td>
+          </tr>
+#foreach ($item in $data.engines)
+          <tr class="row">
+            <td class="cell C0">
+<input type="checkbox" class="checkbox" value="$item.id" />
+            </td>
+            <td class="cell C1">
+$item.domain &nbsp;
+            </td>
+            <td class="cell C2">
+$item.folder &nbsp;
+            </td>
+            <td class="cell C3">
+$item.quota &nbsp;
+            </td>
+          </tr>
+#end
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

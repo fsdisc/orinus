@@ -1,0 +1,64 @@
+﻿<html>
+<head>
+  <title>$lang.edit_folder_page_title | $lang.site_title</title>
+  <script src="$ROOT/scripts/jquery-1.7.2.min.js"></script>
+  <script>
+var ROOT = '$ROOT';
+
+function goClose() {
+  location = ROOT + '/open-engine.jsb?eid=$data.eid';
+}
+
+function goSave() {
+  $('#form').submit();
+}
+  </script>
+  <link rel="stylesheet" type="text/css" href="$ROOT/styles/common.css" media="all"/>
+  <style>
+#folder-edit {
+  width: 300px;
+  margin: 20px auto;
+  height: 120px;
+  border: solid 1px gainsboro;
+}
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="topbar">
+      <center>
+      <a href="javascript:return false;" class="button" onclick="goSave()">$lang.edit_folder_save</a>
+      <a href="javascript:return false;" class="button" onclick="goClose()">$lang.edit_folder_close</a>
+      </center>
+    </div>
+    <div id="workspace">
+      <form id="form" action="$ROOT/edit-folder.jsb?eid=$data.eid&fid=$data.fid" method="post">
+      <div id="folder-edit" class="form">
+        <div class="row first-row">
+$lang.edit_folder_name
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="name" value="$data.name" />
+        </div>
+        <div class="row">
+#if ($data.published.equals("yes"))
+<input type="checkbox" name="published" value="yes" checked />
+#else 
+<input type="checkbox" name="published" value="yes" />
+#end
+$lang.edit_folder_published
+        </div>
+        <div class="message">
+#if ($data.message.equals("NameRequired"))
+$lang.edit_folder_name_required
+#end
+#if ($data.message.equals("NameExists"))
+$lang.edit_folder_name_exists
+#end
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

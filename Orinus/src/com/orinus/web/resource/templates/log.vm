@@ -1,0 +1,112 @@
+﻿<html>
+<head>
+  <title>$lang.log_page_title | $lang.site_title</title>
+  <script src="$ROOT/scripts/jquery-1.7.2.min.js"></script>
+  <script>
+var ROOT = '$ROOT';
+
+function goDelete() {
+  var ids = getAllChecked();
+  if (ids == '') return;
+  $('#ids').val(ids);
+  $('#stage').val('delete');
+  $('#form').submit();
+}
+
+function goDownload() {
+  var lid = getFirstChecked();
+  if (lid == '') return;
+  var url = ROOT + '/log.jsb?eid=$data.eid&fid=$data.fid&lid=' + lid + '&stage=download';
+  window.open(url);
+}
+
+function goClose() {
+  location = ROOT + '/edit-file.jsb?eid=$data.eid&fid=$data.fid';
+}
+
+function getFirstChecked() {
+  var tags = $('.table .row .checkbox');
+  for (var i = 0; i < tags.size(); i++) {
+    if (tags[i].checked) {
+      return tags[i].value;
+    }
+  }
+  return '';
+}
+
+function getAllChecked() {
+  var ids = '';
+  var tags = $('.table .row .checkbox');
+  for (var i = 0; i < tags.size(); i++) {
+    if (tags[i].checked) {
+      if (ids.length > 0) ids += '|';
+      ids += tags[i].value;
+    }
+  }
+  return ids;
+}
+  </script>
+  <link rel="stylesheet" type="text/css" href="$ROOT/styles/common.css" media="all"/>
+  <style>
+#logs {
+  width: 350px;
+  margin: 20px auto;
+}
+.C0 {
+  width: 50px;
+  text-align: center;
+}
+.C1 {
+  width: 200px;
+}
+.C2 {
+  width: 100px;
+}
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="topbar">
+      <center>
+      <a href="javascript:return false;" class="button" onclick="goDownload()">$lang.log_download</a>
+      <a href="javascript:return false;" class="button" onclick="goDelete()">$lang.log_delete</a>
+      <a href="javascript:return false;" class="button" onclick="goClose()">$lang.log_close</a>
+      </center>
+    </div>
+    <div id="workspace">
+      <div id="logs" class="table">
+        <table width="100%" cellspacing="0" cellpadding="0">
+          <tr class="header">
+            <td class="cell C0">
+&nbsp;
+            </td>
+            <td class="cell C1">
+$lang.log_column_created
+            </td>
+            <td class="cell C2">
+$lang.log_column_size
+            </td>
+          </tr>
+#foreach ($item in $data.logitems)
+          <tr class="row">
+            <td class="cell C0">
+<input type="checkbox" class="checkbox" value="$item.id" />
+            </td>
+            <td class="cell C1">
+$item.created &nbsp;
+            </td>
+            <td class="cell C2">
+$item.size &nbsp;
+            </td>
+          </tr>
+#end
+        </table>
+      </div>
+      <form id="form" action="$ROOT/log.jsb?eid=$data.eid&fid=$data.fid" method="post">
+        <input type="hidden" id="stage" name="stage" />
+        <input type="hidden" id="ids" name="ids" />
+      </form>
+    </div>
+  </div>
+</body>
+</html>

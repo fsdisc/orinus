@@ -1,0 +1,26 @@
+﻿        <table width="100%" cellspacing="0" cellpadding="0" class="table">
+          <tr class="header">
+            <td class="cell C0">
+&nbsp;
+            </td>
+            <td class="cell C1">
+$lang.open_engine_column_filename
+            </td>
+            <td class="cell">
+&nbsp;
+            </td>
+          </tr>
+#foreach ($item in $data.files)
+          <tr class="row">
+            <td class="cell C0">
+<input type="checkbox" class="checkbox" value="$item.id" />
+            </td>
+            <td class="cell C1">
+$item.name &nbsp;
+            </td>
+            <td class="cell">
+&nbsp;
+            </td>
+          </tr>
+#end
+        </table>

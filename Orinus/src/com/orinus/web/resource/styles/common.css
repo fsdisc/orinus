@@ -1,0 +1,70 @@
+body {
+  margin: 0px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+#page {
+  width: 800px;
+  height: 600px;
+  border: solid 1px gainsboro;
+  margin: 10px auto;
+}
+#topbar {
+  width: 100%;
+  height: 35px;
+  border-bottom: solid 1px gainsboro;
+}
+#workspace {
+  width: 100%;
+  height: 565px;
+  overflow: auto;
+  padding: 0px;
+}
+#topbar .button {
+  padding: 2px 10px 2px 10px;
+  color: black;
+  text-decoration: none;
+  border: solid 1px teal;
+  border-left: solid 5px teal;
+  cursor: pointer;
+  cursor: hand;
+  display: inline-block;
+  margin: 7px 5px 5px 5px;
+}
+#workspace .table {
+  border: solid 1px gainsboro;
+}
+#workspace .table .header .cell {
+  border-bottom: solid 1px teal;
+  padding: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+#workspace .table .row .cell {
+  border-bottom: solid 1px gainsboro;
+  padding: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+.form .row {
+  margin: 5px 10px 0px 10px;
+}
+.form .row .textbox {
+  width: 100%;
+  border: solid 1px teal;
+}
+.form .first-row {
+  margin-top: 10px;
+}
+.form .row .button {
+  background-color: white;
+  border: solid 1px teal;
+  border-left: solid 5px teal;
+  cursor: pointer;
+  cursor: hand;
+}
+.form .message {
+  color: red;
+  margin: 10px;
+  text-align: center;
+}

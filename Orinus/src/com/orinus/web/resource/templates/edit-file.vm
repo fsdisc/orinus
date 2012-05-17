@@ -1,0 +1,96 @@
+﻿<html>
+<head>
+  <title>$lang.edit_file_page_title | $lang.site_title</title>
+  <script src="$ROOT/scripts/jquery-1.7.2.min.js"></script>
+  <script>
+var ROOT = '$ROOT';
+
+function goLog() {
+  location = ROOT + '/log.jsb?eid=$data.eid&fid=$data.fid';
+}
+
+function goSchedule() {
+  location = ROOT + '/schedule.jsb?eid=$data.eid&fid=$data.fid';
+}
+
+function goDownload() {
+  var url = ROOT + '/edit-file.jsb?eid=$data.eid&fid=$data.fid&stage=download';
+  window.open(url);
+}
+
+function goClose() {
+  location = ROOT + '/open-engine.jsb?eid=$data.eid';
+}
+
+function goSave() {
+  $('#form').submit();
+}
+
+function fileSelected() {
+  var filename = $('#e_file').val();
+  $('#e_name').val(filename);
+}
+  </script>
+  <link rel="stylesheet" type="text/css" href="$ROOT/styles/common.css" media="all"/>
+  <style>
+#file-add {
+  width: 300px;
+  margin: 20px auto;
+  height: 170px;
+  border: solid 1px gainsboro;
+}
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="topbar">
+      <center>
+#if ($data.scheduled)
+      <a href="javascript:return false;" class="button" onclick="goSchedule()">$lang.edit_file_schedule</a>
+#end
+      <a href="javascript:return false;" class="button" onclick="goLog()">$lang.edit_file_log</a>
+      <a href="javascript:return false;" class="button" onclick="goDownload()">$lang.edit_file_download</a>
+      <a href="javascript:return false;" class="button" onclick="goSave()">$lang.edit_file_save</a>
+      <a href="javascript:return false;" class="button" onclick="goClose()">$lang.edit_file_close</a>
+      </center>
+    </div>
+    <div id="workspace">
+      <form id="form" action="$ROOT/edit-file.jsb?eid=$data.eid&fid=$data.fid" method="post" enctype="multipart/form-data">
+      <div id="file-add" class="form">
+        <div class="row first-row">
+$lang.edit_file_name
+        </div>
+        <div class="row">
+<input id="e_name" type="textbox" class="textbox" name="name" value="$data.name" />
+        </div>
+        <div class="row">
+$lang.edit_file_data
+        </div>
+        <div class="row">
+<input id="e_file" type="file" name="data" onchange="fileSelected()" />
+        </div>
+        <div class="row">
+#if ($data.published.equals("yes"))
+<input type="checkbox" name="published" value="yes" checked />
+#else 
+<input type="checkbox" name="published" value="yes" />
+#end
+$lang.edit_file_published
+        </div>
+        <div class="message">
+#if ($data.message.equals("NameRequired"))
+$lang.edit_file_name_required
+#end
+#if ($data.message.equals("NameExists"))
+$lang.edit_file_name_exists
+#end
+#if ($data.message.equals("ExtensionRequired"))
+$lang.edit_file_extension_required
+#end
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

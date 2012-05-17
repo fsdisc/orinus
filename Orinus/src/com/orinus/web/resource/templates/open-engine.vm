@@ -1,0 +1,446 @@
+﻿<html>
+<head>
+  <title>$data.page_title | $lang.site_title</title>
+  <script src="$ROOT/scripts/jquery-1.7.2.min.js"></script>
+  <script>
+var ROOT = '$ROOT';
+var EID = '$data.eid';
+var FID = '$data.eid';
+
+function goExport() {
+  var folder_ids = getTopChecked();
+  var file_ids = getAllChecked2();
+  if (folder_ids.length == 0 && file_ids.length == 0) return;
+  var url = ROOT + '/open-engine.jsb?eid=' + EID + '&folder_ids=' + folder_ids + '&file_ids=' + file_ids + '&stage=export';
+  window.open(url);
+}
+
+function goImport() {
+  var t_fid = FID;
+  if (t_fid == EID) t_fid = '';
+  location = ROOT + '/import.jsb?eid=' + EID + '&fid=' + t_fid;
+}
+
+function goEditFolder() {
+  var t_pid = getFirstChecked();
+  if (t_pid == null) return;
+  if (t_pid == EID) return;
+  location = ROOT + '/edit-folder.jsb?eid=' + EID + '&fid=' + t_pid;
+}
+
+function goDeleteFolder() {
+  var ids = getTopChecked();
+  if (ids.length == 0) return;
+  $('#form .stage').val('delete-folder');
+  $('#form .folder_ids').val(ids);
+  $('#form').submit();
+}
+
+function goAddFolder() {
+  var t_pid = getFirstChecked();
+  if (t_pid == null) return;
+  if (t_pid == EID) t_pid = '';
+  location = ROOT + '/add-folder.jsb?eid=' + EID + '&pid=' + t_pid;
+}
+
+function goEditFile() {
+  var t_fid = getFirstChecked2();
+  if (t_fid == null) return;
+  location = ROOT + '/edit-file.jsb?eid=' + EID + '&fid=' + t_fid;
+}
+
+function goDeleteFile() {
+  var ids = getAllChecked2();
+  if (ids.length == 0) return;
+  $('#form .stage').val('delete-file');
+  $('#form .file_ids').val(ids);
+  $('#form').submit();
+}
+
+function goAddFile() {
+  var t_pid = FID;
+  if (t_pid == EID) t_pid = '';
+  location = ROOT + '/add-file.jsb?eid=' + EID + '&pid=' + t_pid;
+}
+
+function goClose() {
+  location = ROOT + '/';
+}
+
+function toggleNode(nid) {
+  var node = $('#N' + nid);
+  if (node.size() == 0) return;
+  var toggle = node.find('.node');
+  if (toggle.hasClass('minus')) {
+    toggleChildNodes(node.attr('item_path'), false);
+    toggle.toggleClass('minus', false);
+    toggle.toggleClass('plus', true);
+  } else {
+    toggleChildNodes(node.attr('item_path'), true);
+    toggle.toggleClass('minus', true);
+    toggle.toggleClass('plus', false);
+  }
+}
+
+function toggleChildNodes(path, show) {
+  var nodes = $('.tree .tree-item');
+  for (var i = 0; i < nodes.size(); i++) {
+    var node = $(nodes[i]);
+    if (node.attr('item_path') == path + '/' + node.attr('item_id')) {
+      if (show) {
+        node.show();
+      } else {
+        node.hide();
+      }
+      var toggle = node.find('.node');
+      toggle.toggleClass('minus', false);
+      toggle.toggleClass('plus', true);
+    }
+  }
+}
+
+function selectNode(nid) {
+  var tag = $('#N' + FID);
+  if (tag.size() > 0) {
+    tag.toggleClass('cur-item', false);
+  }
+  FID = nid;
+  tag = $('#N' + FID);
+  if (tag.size() > 0) {
+    tag.toggleClass('cur-item', true);
+  }
+  $.get(ROOT + '/open-engine.jsb?eid=' + EID + '&stage=load-file&fid=' + nid, function(data) {
+    $('.table-cover .table-outer').html(data);
+  });
+}
+
+$(function() {
+  selectNode(EID);
+});
+
+function getFirstChecked2() {
+  var tags = $('.table .row .checkbox');
+  for (var i = 0; i < tags.size(); i++) {
+    if (tags[i].checked) {
+      return tags[i].value;
+    }
+  }
+  return null;
+}
+
+function getAllChecked2() {
+  var tag = '';
+  var tags = $('.table .row .checkbox');
+  for (var i = 0; i < tags.size(); i++) {
+    if (tags[i].checked) {
+      if (tag.length > 0) tag += '|';
+      tag += tags[i].value;
+    }
+  }
+  return tag;
+}
+
+function getFirstChecked() {
+  var tag = null;
+  var nodes = $('.tree .tree-item');
+  var node = $(nodes[0]);
+  var tn = document.getElementById('C' + node.attr('item_id'));
+  if (tn.checked) {
+    tag = node.attr('item_id');
+  }
+  if (tag == null) {
+    tag = getFirstCheckedByPath('');
+  }
+  return tag;
+}
+
+function getFirstCheckedByPath(path) {
+  var tag = null;
+  var nodes = $('.tree .tree-item');
+  for (var i = 0; i < nodes.size(); i++) {
+    var node = $(nodes[i]);
+    if (node.attr('item_path') == path + '/' + node.attr('item_id')) {
+      var tn = document.getElementById('C' + node.attr('item_id'));
+      if (tn.checked) {
+        tag = node.attr('item_id');
+        break;
+      }
+    }
+  }
+  if (tag == null) {
+    for (var i = 0; i < nodes.size(); i++) {
+      var node = $(nodes[i]);
+      if (node.attr('item_path') == path + '/' + node.attr('item_id')) {
+        tag = getFirstCheckedByPath(path + '/' + node.attr('item_id'));
+        if (tag != null) break;
+      } 
+    }
+  }
+  return tag;
+}
+
+function getTopChecked() {
+  var tag = '';
+  var nodes = $('.tree .tree-item');
+  var node = $(nodes[0]);
+  var tn = document.getElementById('C' + node.attr('item_id'));
+  if (tn.checked) {
+    tag = node.attr('item_id');
+  }
+  if (tag.length == 0) {
+    tag = getTopCheckedByPath('');
+  }
+  return tag;
+}
+
+function getTopCheckedByPath(path) {
+  var tag = '';
+  var nodes = $('.tree .tree-item');
+  for (var i = 0; i < nodes.size(); i++) {
+    var node = $(nodes[i]);
+    if (node.attr('item_path') == path + '/' + node.attr('item_id')) {
+      var tn = document.getElementById('C' + node.attr('item_id'));
+      if (tn.checked) {
+        if (tag.length > 0) tag += '|';
+        tag += node.attr('item_id');
+      }
+    }
+  }
+  for (var i = 0; i < nodes.size(); i++) {
+    var node = $(nodes[i]);
+    if (node.attr('item_path') == path + '/' + node.attr('item_id')) {
+      var tmp2 = '|' + tag + '|';
+      if (tmp2.indexOf('|' + node.attr('item_id') + '|') >= 0) continue;
+      var tmp = getTopCheckedByPath(path + '/' + node.attr('item_id'));
+      if (tmp.length > 0) {
+        if (tag.length > 0) tag += '|';
+        tag += tmp;
+      }
+    } 
+  }
+  return tag;
+}
+
+  </script>
+  <link rel="stylesheet" type="text/css" href="$ROOT/styles/common.css" media="all"/>
+  <style>
+.pane-cover {
+  margin: 0px;
+}
+.tree-cover {
+  border-right: solid 1px gainsboro;
+}
+.table-outer {
+  width: 489px;
+  height: 555px;
+  overflow: auto;
+  padding: 5px;
+}
+.tree {
+  width: 290px;
+  height: 555px;
+  overflow: auto;
+  padding: 5px;
+}
+.tree .tree-item {
+  white-space: nowrap;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+.tree .tree-item .title {
+  display: inline-block;
+}
+.tree .tree-item .title:hover {
+  border-bottom: solid 1px teal;
+  cursor: pointer;
+  cursor: hand;
+}
+.tree .cur-item .title {
+  border-bottom: solid 1px teal;
+}
+.tree .tree-item .node {
+  display: inline-block;
+}
+.tree .tree-item .check {
+  display: inline-block;
+}
+.tree .tree-item .minus {
+  width: 9px;
+  height: 9px;
+  background: white url('images/minus.png');
+  cursor: pointer;
+  cursor: hand;
+}
+.tree .tree-item .plus {
+  width: 9px;
+  height: 9px;
+  background: white url('images/plus.png');
+  cursor: pointer;
+  cursor: hand;
+}
+.L0 { margin-left: 0px; }
+.L1 { margin-left: 10px; }
+.L2 { margin-left: 20px; }
+.L3 { margin-left: 30px; }
+.L4 { margin-left: 40px; }
+.L5 { margin-left: 50px; }
+.L6 { margin-left: 60px; }
+.L7 { margin-left: 70px; }
+.L8 { margin-left: 80px; }
+.L9 { margin-left: 90px; }
+.L10 { margin-left: 100px; }
+.L11 { margin-left: 110px; }
+.L12 { margin-left: 120px; }
+.L13 { margin-left: 130px; }
+.L14 { margin-left: 140px; }
+.L15 { margin-left: 150px; }
+.L16 { margin-left: 160px; }
+.L17 { margin-left: 170px; }
+.L18 { margin-left: 180px; }
+.L19 { margin-left: 190px; }
+.L20 { margin-left: 200px; }
+.L21 { margin-left: 210px; }
+.L22 { margin-left: 220px; }
+.L23 { margin-left: 230px; }
+.L24 { margin-left: 240px; }
+.L25 { margin-left: 250px; }
+.L26 { margin-left: 260px; }
+.L27 { margin-left: 270px; }
+.L28 { margin-left: 280px; }
+.L29 { margin-left: 290px; }
+.L30 { margin-left: 300px; }
+.L31 { margin-left: 310px; }
+.L32 { margin-left: 320px; }
+.L33 { margin-left: 330px; }
+.L34 { margin-left: 340px; }
+.L35 { margin-left: 350px; }
+.L36 { margin-left: 360px; }
+.L37 { margin-left: 370px; }
+.L38 { margin-left: 380px; }
+.L39 { margin-left: 390px; }
+.L40 { margin-left: 400px; }
+.L41 { margin-left: 410px; }
+.L42 { margin-left: 420px; }
+.L43 { margin-left: 430px; }
+.L44 { margin-left: 440px; }
+.L45 { margin-left: 450px; }
+.L46 { margin-left: 460px; }
+.L47 { margin-left: 470px; }
+.L48 { margin-left: 480px; }
+.L49 { margin-left: 490px; }
+.L50 { margin-left: 500px; }
+.L51 { margin-left: 510px; }
+.L52 { margin-left: 520px; }
+.L53 { margin-left: 530px; }
+.L54 { margin-left: 540px; }
+.L55 { margin-left: 550px; }
+.L56 { margin-left: 560px; }
+.L57 { margin-left: 570px; }
+.L58 { margin-left: 580px; }
+.L59 { margin-left: 590px; }
+.L60 { margin-left: 600px; }
+.L61 { margin-left: 610px; }
+.L62 { margin-left: 620px; }
+.L63 { margin-left: 630px; }
+.L64 { margin-left: 640px; }
+.L65 { margin-left: 650px; }
+.L66 { margin-left: 660px; }
+.L67 { margin-left: 670px; }
+.L68 { margin-left: 680px; }
+.L69 { margin-left: 690px; }
+.L70 { margin-left: 700px; }
+.L71 { margin-left: 710px; }
+.L72 { margin-left: 720px; }
+.L73 { margin-left: 730px; }
+.L74 { margin-left: 740px; }
+.L75 { margin-left: 750px; }
+.L76 { margin-left: 760px; }
+.L77 { margin-left: 770px; }
+.L78 { margin-left: 780px; }
+.L79 { margin-left: 790px; }
+.L80 { margin-left: 800px; }
+.L81 { margin-left: 810px; }
+.L82 { margin-left: 820px; }
+.L83 { margin-left: 830px; }
+.L84 { margin-left: 840px; }
+.L85 { margin-left: 850px; }
+.L86 { margin-left: 860px; }
+.L87 { margin-left: 870px; }
+.L88 { margin-left: 880px; }
+.L89 { margin-left: 890px; }
+.L90 { margin-left: 900px; }
+.L91 { margin-left: 910px; }
+.L92 { margin-left: 920px; }
+.L93 { margin-left: 930px; }
+.L94 { margin-left: 940px; }
+.L95 { margin-left: 950px; }
+.L96 { margin-left: 960px; }
+.L97 { margin-left: 970px; }
+.L98 { margin-left: 980px; }
+.L99 { margin-left: 990px; }
+.C0 {
+  width: 50px;
+  text-align: center;
+}
+.C1 {
+  width: 400px;
+}
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="topbar">
+      <center>
+      <a href="javascript:return false;" class="button" onclick="goExport()">$lang.open_engine_export</a>
+      <a href="javascript:return false;" class="button" onclick="goImport()">$lang.open_engine_import</a>
+      <a href="javascript:return false;" class="button" onclick="goEditFolder()">$lang.open_engine_edit_folder</a>
+      <a href="javascript:return false;" class="button" onclick="goDeleteFolder()">$lang.open_engine_delete_folder</a>
+      <a href="javascript:return false;" class="button" onclick="goAddFolder()">$lang.open_engine_add_folder</a>
+      <a href="javascript:return false;" class="button" onclick="goEditFile()">$lang.open_engine_edit_file</a>
+      <a href="javascript:return false;" class="button" onclick="goDeleteFile()">$lang.open_engine_delete_file</a>
+      <a href="javascript:return false;" class="button" onclick="goAddFile()">$lang.open_engine_add_file</a>
+      <a href="javascript:return false;" class="button" onclick="goClose()">$lang.open_engine_close</a>
+      </center>
+    </div>
+    <div id="workspace">
+        <table width="100%" height="100%" cellspacing="0" cellpadding="0" class="pane-cover">
+          <tr>
+            <td width="300px" valign="top" class="tree-cover">
+<div class="tree">
+  <div id="N$data.eid" class="tree-item L0" item_level="0" item_id="$data.eid" item_parent="" item_path="/">
+    <div class="node minus" onclick="toggleNode('$data.eid')"></div>
+    <div class="check"><input id="C$data.eid" type="checkbox" class="checkbox" value="$data.eid" /></div>
+    <div class="title" onclick="selectNode('$data.eid')">$data.page_title</div>
+  </div>
+#foreach ($item in $data.folders)
+  #if ($item.level.equals("1"))
+  <div id="N$item.id" class="tree-item L$item.level" item_level="$item.level" item_id="$item.id" item_parent="$item.parent" item_path="$item.path">
+    <div class="node plus" onclick="toggleNode('$item.id')"></div>
+    <div class="check"><input id="C$item.id" type="checkbox" class="checkbox" value="$item.id" /></div>
+    <div class="title" onclick="selectNode('$item.id')">$item.name</div>
+  </div>
+  #else
+  <div id="N$item.id" style="display:none" class="tree-item L$item.level" item_level="$item.level" item_id="$item.id" item_parent="$item.parent" item_path="$item.path">
+    <div class="node plus" onclick="toggleNode('$item.id')"></div>
+    <div class="check"><input id="C$item.id" type="checkbox" class="checkbox" value="$item.id" /></div>
+    <div class="title" onclick="selectNode('$item.id')">$item.name</div>
+  </div>
+  #end
+#end
+</div>
+            </td>
+            <td width="500px" valign="top" class="table-cover">
+<div class="table-outer">
+</div>
+            </td>
+          </tr>
+        </table>
+    </div>
+  </div>
+  <form id="form" action="$ROOT/open-engine.jsb?eid=$data.eid" method="post">
+    <input type="hidden" class="stage" name="stage" />
+    <input type="hidden" class="file_ids" name="file_ids" />
+    <input type="hidden" class="folder_ids" name="folder_ids" />
+  </form>
+</body>
+</html>

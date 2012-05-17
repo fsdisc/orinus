@@ -1,0 +1,133 @@
+﻿<html>
+<head>
+  <title>$lang.edit_engine_page_title | $lang.site_title</title>
+  <script src="$ROOT/scripts/jquery-1.7.2.min.js"></script>
+  <script>
+var ROOT = '$ROOT';
+
+function goClose() {
+  location = ROOT + '/';
+}
+
+function goNew() {
+  $('#stage').val('new-token');
+  $('#form').submit();
+}
+
+function goSave() {
+  $('#form').submit();
+}
+  </script>
+  <link rel="stylesheet" type="text/css" href="$ROOT/styles/common.css" media="all"/>
+  <style>
+#engine-edit {
+  width: 300px;
+  margin: 20px auto;
+  height: 510px;
+  border: solid 1px gainsboro;
+}
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="topbar">
+      <center>
+      <a href="javascript:return false;" class="button" onclick="goNew()">$lang.edit_engine_New</a>
+      <a href="javascript:return false;" class="button" onclick="goSave()">$lang.edit_engine_save</a>
+      <a href="javascript:return false;" class="button" onclick="goClose()">$lang.edit_engine_close</a>
+      </center>
+    </div>
+    <div id="workspace">
+      <form id="form" action="$ROOT/edit-engine.jsb?eid=$data.id" method="post">
+      <div id="engine-edit" class="form">
+        <div class="row first-row">
+$lang.edit_engine_domain
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="domain" value="$data.domain" />
+        </div>
+        <div class="row">
+$lang.edit_engine_folder
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="folder" value="$data.folder" />
+        </div>
+        <div class="row">
+$lang.edit_engine_quota
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="quota" value="$data.quota" />
+        </div>
+        <div class="row">
+$lang.edit_engine_Timeout
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="timeout" value="$data.timeout" />
+        </div>
+        <div class="row">
+$lang.edit_engine_Runtime
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="runtime" value="$data.runtime" />
+        </div>
+        <div class="row">
+$lang.edit_engine_Token
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="token" value="$data.token" readonly="readonly" />
+        </div>
+        <div class="row">
+#if ($data.distributed.equals("yes"))
+<input type="checkbox" name="distributed" value="yes" checked />
+#else 
+<input type="checkbox" name="distributed" value="yes" />
+#end
+$lang.edit_engine_Distributed
+        </div>
+        <div class="row">
+$lang.edit_engine_RemoteHost
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="remote_host" value="$data.remote_host" />
+        </div>
+        <div class="row">
+$lang.edit_engine_RemotePort
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="remote_port" value="$data.remote_port" />
+        </div>
+        <div class="row">
+$lang.edit_engine_RemoteToken
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="remote_token" value="$data.remote_token" />
+        </div>
+        <div class="row">
+#if ($data.run_script.equals("yes"))
+<input type="checkbox" name="run_script" value="yes" checked />
+#else 
+<input type="checkbox" name="run_script" value="yes" />
+#end
+$lang.edit_engine_run_script
+        </div>
+        <div class="message">
+#if ($data.message.equals("DomainExists"))
+$lang.edit_engine_domain_exists
+#end
+#if ($data.message.equals("FolderRequired"))
+$lang.edit_engine_folder_required
+#end
+#if ($data.message.equals("FolderExists"))
+$lang.edit_engine_folder_exists
+#end
+#if ($data.message.equals("InvalidQuota"))
+$lang.edit_engine_invalid_quota
+#end
+        </div>
+        <input id="stage" type="hidden" name="stage" value="" />
+      </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

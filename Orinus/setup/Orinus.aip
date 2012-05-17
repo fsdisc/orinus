@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT type="Advanced Installer" CreateVersion="7.2.1" version="7.2.1" modules="java" RootPath="." Language="en">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
+    <ROW Property="AI_MINJREVERSION" MultiBuildValue="DefaultBuild:1.6" ValueLocId="-"/>
+    <ROW Property="ALLUSERS" Value="2"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="BannerBitmap" MultiBuildValue="DefaultBuild:banner_image.jpg" Type="1"/>
+    <ROW Property="DialogBitmap" MultiBuildValue="DefaultBuild:dialog_image.jpg" Type="1"/>
+    <ROW Property="Manufacturer" Value="bHive F" ValueLocId="*"/>
+    <ROW Property="ProductCode" Value="1033:{2A4D540B-261E-44A8-A9BD-542FC9370733} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="Orinus - JavaScript SandBox" ValueLocId="*"/>
+    <ROW Property="ProductVersion" Value="1.0.0"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
+    <ROW Property="UpgradeCode" Value="{40396384-68E9-4B72-93CF-03C7EB272562}"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="Deskto~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="Orinus_DIR" Directory_Parent="APPDIR" DefaultDir="bin"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="cfg_DIR" Directory_Parent="APPDIR" DefaultDir="cfg"/>
+    <ROW Directory="com_DIR" Directory_Parent="Orinus_DIR" DefaultDir="com"/>
+    <ROW Directory="dat_DIR" Directory_Parent="APPDIR" DefaultDir="dat"/>
+    <ROW Directory="images_1_DIR" Directory_Parent="resource_1_DIR" DefaultDir="images"/>
+    <ROW Directory="images_DIR" Directory_Parent="resource_DIR" DefaultDir="images"/>
+    <ROW Directory="jetty_DIR" Directory_Parent="safe_DIR" DefaultDir="jetty"/>
+    <ROW Directory="jsoup_DIR" Directory_Parent="safe_DIR" DefaultDir="jsoup"/>
+    <ROW Directory="languages_DIR" Directory_Parent="resource_1_DIR" DefaultDir="langua~1|languages"/>
+    <ROW Directory="log_DIR" Directory_Parent="APPDIR" DefaultDir="log"/>
+    <ROW Directory="lucene_DIR" Directory_Parent="safe_DIR" DefaultDir="lucene"/>
+    <ROW Directory="mysql_DIR" Directory_Parent="safe_DIR" DefaultDir="mysql"/>
+    <ROW Directory="orinus_DIR" Directory_Parent="com_DIR" DefaultDir="orinus"/>
+    <ROW Directory="resource_1_DIR" Directory_Parent="web_DIR" DefaultDir="resource"/>
+    <ROW Directory="resource_DIR" Directory_Parent="orinus_DIR" DefaultDir="resource"/>
+    <ROW Directory="safe_DIR" Directory_Parent="script_DIR" DefaultDir="safe"/>
+    <ROW Directory="schema_DIR" Directory_Parent="orinus_DIR" DefaultDir="schema"/>
+    <ROW Directory="script_DIR" Directory_Parent="orinus_DIR" DefaultDir="script"/>
+    <ROW Directory="scripts_DIR" Directory_Parent="resource_1_DIR" DefaultDir="scripts"/>
+    <ROW Directory="styles_DIR" Directory_Parent="resource_1_DIR" DefaultDir="styles"/>
+    <ROW Directory="templates_DIR" Directory_Parent="resource_1_DIR" DefaultDir="templa~1|templates"/>
+    <ROW Directory="view_DIR" Directory_Parent="orinus_DIR" DefaultDir="view"/>
+    <ROW Directory="web_DIR" Directory_Parent="orinus_DIR" DefaultDir="web"/>
+    <ROW Directory="zip_DIR" Directory_Parent="safe_DIR" DefaultDir="zip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="AI_ExePath" ComponentId="{C629B3E5-4678-42FB-8105-7BE13AB16DBB}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
+    <ROW Component="AddEngineDialog_1.class" ComponentId="{5BEDD74D-158B-4E5D-A48C-2F81FC0D1DD4}" Directory_="view_DIR" Attributes="0" KeyPath="AddEngineDialog_1.class" Type="0"/>
+    <ROW Component="AddEnginePage.class" ComponentId="{9B5EDFB1-8876-49F7-BCEC-69D3DCD8EBB8}" Directory_="web_DIR" Attributes="0" KeyPath="AddEnginePage.class" Type="0"/>
+    <ROW Component="Config.class" ComponentId="{CD18B92F-6FCA-4E45-9DBB-7EC55E707529}" Directory_="orinus_DIR" Attributes="0" KeyPath="Config.class" Type="0"/>
+    <ROW Component="Engine.class" ComponentId="{5F36AD51-8B81-497F-8C2B-D4B3DF097F79}" Directory_="schema_DIR" Attributes="0" KeyPath="Engine.class" Type="0"/>
+    <ROW Component="Files.class" ComponentId="{C9DD4A6E-5940-4162-A518-F0DC9C6FDE6D}" Directory_="resource_DIR" Attributes="0" KeyPath="Files.class" Type="0"/>
+    <ROW Component="ImExTool.class" ComponentId="{2FDFD59B-0E14-44BC-A064-0F83FB3C07A0}" Directory_="script_DIR" Attributes="0" KeyPath="ImExTool.class" Type="0"/>
+    <ROW Component="Orinus.exe" ComponentId="{AB49F6DB-E90A-4A97-9834-70F2CA57C623}" Directory_="APPDIR" Attributes="0" KeyPath="Orinus.exe"/>
+    <ROW Component="OrinusWS.exe" ComponentId="{D871B554-53A7-4965-A065-FD87407044FB}" Directory_="APPDIR" Attributes="0" KeyPath="OrinusWS.exe"/>
+    <ROW Component="SConnection.class" ComponentId="{7B258E2B-E84B-49DC-9991-F31D1E5E2E0E}" Directory_="jsoup_DIR" Attributes="0" KeyPath="SConnection.class" Type="0"/>
+    <ROW Component="SEntity_Handler.class" ComponentId="{69C0106A-5B91-4B9B-8B30-A2D56D123716}" Directory_="lucene_DIR" Attributes="0" KeyPath="SEntity_Handler.class" Type="0"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{593C4839-E490-43B8-A1ED-1E8C8139CE75}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="SMySQL.class" ComponentId="{A1261942-C37C-4B20-9ABD-6B7289F9DEB7}" Directory_="mysql_DIR" Attributes="0" KeyPath="SMySQL.class" Type="0"/>
+    <ROW Component="SRequest_FileEntry.class" ComponentId="{DD6F589E-194A-46E5-BDC2-C05212BA92A4}" Directory_="jetty_DIR" Attributes="0" KeyPath="SRequest_FileEntry.class" Type="0"/>
+    <ROW Component="SZip_FileEntry.class" ComponentId="{FEDE44A4-8B8C-4BE4-AAAB-FCDCB011B161}" Directory_="zip_DIR" Attributes="0" KeyPath="SZip_FileEntry.class" Type="0"/>
+    <ROW Component="add_engine.vm" ComponentId="{1FDE1072-498E-43E9-B3E8-433CB54660E6}" Directory_="templates_DIR" Attributes="0" KeyPath="add_engine.vm" Type="0"/>
+    <ROW Component="cfg" ComponentId="{9EAD15F1-3E84-4703-8180-C3977673719C}" Directory_="cfg_DIR" Attributes="0"/>
+    <ROW Component="common.css" ComponentId="{7A853868-E7CD-4926-A0E3-8D50ECA16CC6}" Directory_="styles_DIR" Attributes="0" KeyPath="common.css" Type="0"/>
+    <ROW Component="config.properties" ComponentId="{58B9BEB6-D699-4AA8-9162-B0DD84A9B25E}" Directory_="cfg_DIR" Attributes="0" KeyPath="config.properties" Type="0"/>
+    <ROW Component="dat" ComponentId="{B5BA6C1D-E63B-4716-965D-546E43802E6D}" Directory_="dat_DIR" Attributes="0"/>
+    <ROW Component="en.lang" ComponentId="{9F04AE50-2EF9-4804-B9AC-F4167CC19159}" Directory_="languages_DIR" Attributes="0" KeyPath="en.lang" Type="0"/>
+    <ROW Component="jquery_1.7.2.min.js" ComponentId="{8F73E48D-D2F8-43F3-BA9A-5069165C74DD}" Directory_="scripts_DIR" Attributes="0" KeyPath="jquery_1.7.2.min.js" Type="0"/>
+    <ROW Component="log" ComponentId="{5AE635E4-7D81-4A16-AC43-A7B3B40603F2}" Directory_="log_DIR" Attributes="0"/>
+    <ROW Component="log4j_1.2.8.jar" ComponentId="{CEA97A9E-8862-4C80-843C-B77EB20C1F91}" Directory_="Orinus_DIR" Attributes="0" KeyPath="log4j_1.2.8.jar" Type="0"/>
+    <ROW Component="minus.png" ComponentId="{1315E807-263D-4986-9477-C17ADD944A4B}" Directory_="images_1_DIR" Attributes="0" KeyPath="minus.png" Type="0"/>
+    <ROW Component="orinus_16x16.png" ComponentId="{4464E17B-FE3A-4FE9-B5B2-53BF74AF1807}" Directory_="images_DIR" Attributes="0" KeyPath="orinus_16x16.png" Type="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="Orinus.exe OrinusWS.exe Config.class Files.class orinus_16x16.png Engine.class ImExTool.class SRequest_FileEntry.class SConnection.class SEntity_Handler.class SMySQL.class SZip_FileEntry.class AddEngineDialog_1.class AddEnginePage.class minus.png en.lang jquery_1.7.2.min.js common.css add_engine.vm log4j_1.2.8.jar log dat config.properties SHORTCUTDIR AI_ExePath cfg"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="APIPage.class" Component_="AddEnginePage.class" FileName="APIPag~2.cla|APIPage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\APIPage.class" SelfReg="false" Sequence="116"/>
+    <ROW File="APIPage_Tracking.class" Component_="AddEnginePage.class" FileName="APIPag~1.cla|APIPage$Tracking.class" Attributes="0" SourcePath="..\bin\com\orinus\web\APIPage$Tracking.class" SelfReg="false" Sequence="115"/>
+    <ROW File="AddEngineDialog.class" Component_="AddEngineDialog_1.class" FileName="AddEng~4.cla|AddEngineDialog.class" Attributes="0" SourcePath="..\bin\com\orinus\view\AddEngineDialog.class" SelfReg="false" Sequence="51"/>
+    <ROW File="AddEngineDialog_1.class" Component_="AddEngineDialog_1.class" FileName="AddEng~1.cla|AddEngineDialog$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\AddEngineDialog$1.class" SelfReg="false" Sequence="48"/>
+    <ROW File="AddEngineDialog_2.class" Component_="AddEngineDialog_1.class" FileName="AddEng~2.cla|AddEngineDialog$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\AddEngineDialog$2.class" SelfReg="false" Sequence="49"/>
+    <ROW File="AddEngineDialog_3.class" Component_="AddEngineDialog_1.class" FileName="AddEng~3.cla|AddEngineDialog$3.class" Attributes="0" SourcePath="..\bin\com\orinus\view\AddEngineDialog$3.class" SelfReg="false" Sequence="50"/>
+    <ROW File="AddEnginePage.class" Component_="AddEnginePage.class" FileName="AddEng~1.cla|AddEnginePage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\AddEnginePage.class" SelfReg="false" Sequence="112"/>
+    <ROW File="AddFileDialog.class" Component_="AddEngineDialog_1.class" FileName="AddFil~4.cla|AddFileDialog.class" Attributes="0" SourcePath="..\bin\com\orinus\view\AddFileDialog.class" SelfReg="false" Sequence="55"/>
+    <ROW File="AddFileDialog_1.class" Component_="AddEngineDialog_1.class" FileName="AddFil~1.cla|AddFileDialog$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\AddFileDialog$1.class" SelfReg="false" Sequence="52"/>
+    <ROW File="AddFileDialog_2.class" Component_="AddEngineDialog_1.class" FileName="AddFil~2.cla|AddFileDialog$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\AddFileDialog$2.class" SelfReg="false" Sequence="53"/>
+    <ROW File="AddFileDialog_3.class" Component_="AddEngineDialog_1.class" FileName="AddFil~3.cla|AddFileDialog$3.class" Attributes="0" SourcePath="..\bin\com\orinus\view\AddFileDialog$3.class" SelfReg="false" Sequence="54"/>
+    <ROW File="AddFilePage.class" Component_="AddEnginePage.class" FileName="AddFil~1.cla|AddFilePage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\AddFilePage.class" SelfReg="false" Sequence="113"/>
+    <ROW File="AddFolderDialog.class" Component_="AddEngineDialog_1.class" FileName="AddFol~3.cla|AddFolderDialog.class" Attributes="0" SourcePath="..\bin\com\orinus\view\AddFolderDialog.class" SelfReg="false" Sequence="58"/>
+    <ROW File="AddFolderDialog_1.class" Component_="AddEngineDialog_1.class" FileName="AddFol~1.cla|AddFolderDialog$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\AddFolderDialog$1.class" SelfReg="false" Sequence="56"/>
+    <ROW File="AddFolderDialog_2.class" Component_="AddEngineDialog_1.class" FileName="AddFol~2.cla|AddFolderDialog$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\AddFolderDialog$2.class" SelfReg="false" Sequence="57"/>
+    <ROW File="AddFolderPage.class" Component_="AddEnginePage.class" FileName="AddFol~1.cla|AddFolderPage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\AddFolderPage.class" SelfReg="false" Sequence="114"/>
+    <ROW File="BasePage.class" Component_="AddEnginePage.class" FileName="BasePa~1.cla|BasePage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\BasePage.class" SelfReg="false" Sequence="117"/>
+    <ROW File="Config.class" Component_="Config.class" FileName="Config~1.cla|Config.class" Attributes="0" SourcePath="..\bin\com\orinus\Config.class" SelfReg="false" Sequence="3"/>
+    <ROW File="Controller.class" Component_="Config.class" FileName="Contro~1.cla|Controller.class" Attributes="0" SourcePath="..\bin\com\orinus\Controller.class" SelfReg="false" Sequence="4"/>
+    <ROW File="Crypto.class" Component_="Config.class" FileName="Crypto~1.cla|Crypto.class" Attributes="0" SourcePath="..\bin\com\orinus\Crypto.class" SelfReg="false" Sequence="5"/>
+    <ROW File="EditEngineDialog.class" Component_="AddEngineDialog_1.class" FileName="EditEn~4.cla|EditEngineDialog.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditEngineDialog.class" SelfReg="false" Sequence="62"/>
+    <ROW File="EditEngineDialog_1.class" Component_="AddEngineDialog_1.class" FileName="EditEn~1.cla|EditEngineDialog$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditEngineDialog$1.class" SelfReg="false" Sequence="59"/>
+    <ROW File="EditEngineDialog_2.class" Component_="AddEngineDialog_1.class" FileName="EditEn~2.cla|EditEngineDialog$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditEngineDialog$2.class" SelfReg="false" Sequence="60"/>
+    <ROW File="EditEngineDialog_3.class" Component_="AddEngineDialog_1.class" FileName="EditEn~3.cla|EditEngineDialog$3.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditEngineDialog$3.class" SelfReg="false" Sequence="61"/>
+    <ROW File="EditEnginePage.class" Component_="AddEnginePage.class" FileName="EditEn~1.cla|EditEnginePage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\EditEnginePage.class" SelfReg="false" Sequence="118"/>
+    <ROW File="EditFileDialog.class" Component_="AddEngineDialog_1.class" FileName="EditFi~7.cla|EditFileDialog.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditFileDialog.class" SelfReg="false" Sequence="69"/>
+    <ROW File="EditFileDialog_1.class" Component_="AddEngineDialog_1.class" FileName="EditFi~1.cla|EditFileDialog$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditFileDialog$1.class" SelfReg="false" Sequence="63"/>
+    <ROW File="EditFileDialog_2.class" Component_="AddEngineDialog_1.class" FileName="EditFi~2.cla|EditFileDialog$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditFileDialog$2.class" SelfReg="false" Sequence="64"/>
+    <ROW File="EditFileDialog_3.class" Component_="AddEngineDialog_1.class" FileName="EditFi~3.cla|EditFileDialog$3.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditFileDialog$3.class" SelfReg="false" Sequence="65"/>
+    <ROW File="EditFileDialog_4.class" Component_="AddEngineDialog_1.class" FileName="EditFi~4.cla|EditFileDialog$4.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditFileDialog$4.class" SelfReg="false" Sequence="66"/>
+    <ROW File="EditFileDialog_5.class" Component_="AddEngineDialog_1.class" FileName="EditFi~5.cla|EditFileDialog$5.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditFileDialog$5.class" SelfReg="false" Sequence="67"/>
+    <ROW File="EditFileDialog_6.class" Component_="AddEngineDialog_1.class" FileName="EditFi~6.cla|EditFileDialog$6.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditFileDialog$6.class" SelfReg="false" Sequence="68"/>
+    <ROW File="EditFilePage.class" Component_="AddEnginePage.class" FileName="EditFi~1.cla|EditFilePage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\EditFilePage.class" SelfReg="false" Sequence="119"/>
+    <ROW File="EditFolderDialog.class" Component_="AddEngineDialog_1.class" FileName="EditFo~3.cla|EditFolderDialog.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditFolderDialog.class" SelfReg="false" Sequence="72"/>
+    <ROW File="EditFolderDialog_1.class" Component_="AddEngineDialog_1.class" FileName="EditFo~1.cla|EditFolderDialog$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditFolderDialog$1.class" SelfReg="false" Sequence="70"/>
+    <ROW File="EditFolderDialog_2.class" Component_="AddEngineDialog_1.class" FileName="EditFo~2.cla|EditFolderDialog$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\EditFolderDialog$2.class" SelfReg="false" Sequence="71"/>
+    <ROW File="EditFolderPage.class" Component_="AddEnginePage.class" FileName="EditFo~1.cla|EditFolderPage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\EditFolderPage.class" SelfReg="false" Sequence="120"/>
+    <ROW File="Engine.class" Component_="Engine.class" FileName="Engine~1.cla|Engine.class" Attributes="0" SourcePath="..\bin\com\orinus\schema\Engine.class" SelfReg="false" Sequence="14"/>
+    <ROW File="FileData.class" Component_="Engine.class" FileName="FileDa~1.cla|FileData.class" Attributes="0" SourcePath="..\bin\com\orinus\schema\FileData.class" SelfReg="false" Sequence="15"/>
+    <ROW File="FileItem.class" Component_="Engine.class" FileName="FileIt~1.cla|FileItem.class" Attributes="0" SourcePath="..\bin\com\orinus\schema\FileItem.class" SelfReg="false" Sequence="16"/>
+    <ROW File="Files.class" Component_="Files.class" FileName="Files~1.cla|Files.class" Attributes="0" SourcePath="..\bin\com\orinus\resource\Files.class" SelfReg="false" Sequence="7"/>
+    <ROW File="Folder.class" Component_="Engine.class" FileName="Folder~1.cla|Folder.class" Attributes="0" SourcePath="..\bin\com\orinus\schema\Folder.class" SelfReg="false" Sequence="17"/>
+    <ROW File="HomePage.class" Component_="AddEnginePage.class" FileName="HomePa~1.cla|HomePage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\HomePage.class" SelfReg="false" Sequence="121"/>
+    <ROW File="IOTool.class" Component_="Config.class" FileName="IOTool~1.cla|IOTool.class" Attributes="0" SourcePath="..\bin\com\orinus\IOTool.class" SelfReg="false" Sequence="6"/>
+    <ROW File="ImExTool.class" Component_="ImExTool.class" FileName="ImExTo~1.cla|ImExTool.class" Attributes="0" SourcePath="..\bin\com\orinus\script\ImExTool.class" SelfReg="false" Sequence="20"/>
+    <ROW File="Images.class" Component_="Files.class" FileName="Images~1.cla|Images.class" Attributes="0" SourcePath="..\bin\com\orinus\resource\Images.class" SelfReg="false" Sequence="9"/>
+    <ROW File="ImportPage.class" Component_="AddEnginePage.class" FileName="Import~1.cla|ImportPage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\ImportPage.class" SelfReg="false" Sequence="122"/>
+    <ROW File="Labels.class" Component_="Files.class" FileName="Labels~1.cla|Labels.class" Attributes="0" SourcePath="..\bin\com\orinus\resource\Labels.class" SelfReg="false" Sequence="10"/>
+    <ROW File="Labels.properties" Component_="Files.class" FileName="Labels~1.pro|Labels.properties" Attributes="0" SourcePath="..\bin\com\orinus\resource\Labels.properties" SelfReg="false" Sequence="11"/>
+    <ROW File="LogData.class" Component_="Engine.class" FileName="LogDat~1.cla|LogData.class" Attributes="0" SourcePath="..\bin\com\orinus\schema\LogData.class" SelfReg="false" Sequence="18"/>
+    <ROW File="LogDialog.class" Component_="AddEngineDialog_1.class" FileName="LogDia~4.cla|LogDialog.class" Attributes="0" SourcePath="..\bin\com\orinus\view\LogDialog.class" SelfReg="false" Sequence="76"/>
+    <ROW File="LogDialog_1.class" Component_="AddEngineDialog_1.class" FileName="LogDia~1.cla|LogDialog$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\LogDialog$1.class" SelfReg="false" Sequence="73"/>
+    <ROW File="LogDialog_2.class" Component_="AddEngineDialog_1.class" FileName="LogDia~2.cla|LogDialog$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\LogDialog$2.class" SelfReg="false" Sequence="74"/>
+    <ROW File="LogDialog_3.class" Component_="AddEngineDialog_1.class" FileName="LogDia~3.cla|LogDialog$3.class" Attributes="0" SourcePath="..\bin\com\orinus\view\LogDialog$3.class" SelfReg="false" Sequence="75"/>
+    <ROW File="LogItem.class" Component_="Engine.class" FileName="LogIte~1.cla|LogItem.class" Attributes="0" SourcePath="..\bin\com\orinus\schema\LogItem.class" SelfReg="false" Sequence="19"/>
+    <ROW File="LogPage.class" Component_="AddEnginePage.class" FileName="LogPag~1.cla|LogPage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\LogPage.class" SelfReg="false" Sequence="123"/>
+    <ROW File="LuceneHandler.class" Component_="ImExTool.class" FileName="Lucene~5.cla|LuceneHandler.class" Attributes="0" SourcePath="..\bin\com\orinus\script\LuceneHandler.class" SelfReg="false" Sequence="25"/>
+    <ROW File="LuceneHandler_CreateTask.class" Component_="ImExTool.class" FileName="Lucene~1.cla|LuceneHandler$CreateTask.class" Attributes="0" SourcePath="..\bin\com\orinus\script\LuceneHandler$CreateTask.class" SelfReg="false" Sequence="21"/>
+    <ROW File="LuceneHandler_DeleteTask.class" Component_="ImExTool.class" FileName="Lucene~2.cla|LuceneHandler$DeleteTask.class" Attributes="0" SourcePath="..\bin\com\orinus\script\LuceneHandler$DeleteTask.class" SelfReg="false" Sequence="22"/>
+    <ROW File="LuceneHandler_Monitor.class" Component_="ImExTool.class" FileName="Lucene~3.cla|LuceneHandler$Monitor.class" Attributes="0" SourcePath="..\bin\com\orinus\script\LuceneHandler$Monitor.class" SelfReg="false" Sequence="23"/>
+    <ROW File="LuceneHandler_UpdateTask.class" Component_="ImExTool.class" FileName="Lucene~4.cla|LuceneHandler$UpdateTask.class" Attributes="0" SourcePath="..\bin\com\orinus\script\LuceneHandler$UpdateTask.class" SelfReg="false" Sequence="24"/>
+    <ROW File="Machine.class" Component_="ImExTool.class" FileName="Machin~5.cla|Machine.class" Attributes="0" SourcePath="..\bin\com\orinus\script\Machine.class" SelfReg="false" Sequence="30"/>
+    <ROW File="Machine_1.class" Component_="ImExTool.class" FileName="Machin~1.cla|Machine$1.class" Attributes="0" SourcePath="..\bin\com\orinus\script\Machine$1.class" SelfReg="false" Sequence="26"/>
+    <ROW File="Machine_Handler.class" Component_="ImExTool.class" FileName="Machin~2.cla|Machine$Handler.class" Attributes="0" SourcePath="..\bin\com\orinus\script\Machine$Handler.class" SelfReg="false" Sequence="27"/>
+    <ROW File="Machine_SContext.class" Component_="ImExTool.class" FileName="Machin~3.cla|Machine$SContext.class" Attributes="0" SourcePath="..\bin\com\orinus\script\Machine$SContext.class" SelfReg="false" Sequence="28"/>
+    <ROW File="Machine_SFactory.class" Component_="ImExTool.class" FileName="Machin~4.cla|Machine$SFactory.class" Attributes="0" SourcePath="..\bin\com\orinus\script\Machine$SFactory.class" SelfReg="false" Sequence="29"/>
+    <ROW File="MainWindow.class" Component_="AddEngineDialog_1.class" FileName="MainWi~9.cla|MainWindow.class" Attributes="0" SourcePath="..\bin\com\orinus\view\MainWindow.class" SelfReg="false" Sequence="85"/>
+    <ROW File="MainWindow_1.class" Component_="AddEngineDialog_1.class" FileName="MainWi~1.cla|MainWindow$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\MainWindow$1.class" SelfReg="false" Sequence="77"/>
+    <ROW File="MainWindow_2.class" Component_="AddEngineDialog_1.class" FileName="MainWi~2.cla|MainWindow$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\MainWindow$2.class" SelfReg="false" Sequence="78"/>
+    <ROW File="MainWindow_3.class" Component_="AddEngineDialog_1.class" FileName="MainWi~3.cla|MainWindow$3.class" Attributes="0" SourcePath="..\bin\com\orinus\view\MainWindow$3.class" SelfReg="false" Sequence="79"/>
+    <ROW File="MainWindow_4.class" Component_="AddEngineDialog_1.class" FileName="MainWi~4.cla|MainWindow$4.class" Attributes="0" SourcePath="..\bin\com\orinus\view\MainWindow$4.class" SelfReg="false" Sequence="80"/>
+    <ROW File="MainWindow_5.class" Component_="AddEngineDialog_1.class" FileName="MainWi~5.cla|MainWindow$5.class" Attributes="0" SourcePath="..\bin\com\orinus\view\MainWindow$5.class" SelfReg="false" Sequence="81"/>
+    <ROW File="MainWindow_6.class" Component_="AddEngineDialog_1.class" FileName="MainWi~6.cla|MainWindow$6.class" Attributes="0" SourcePath="..\bin\com\orinus\view\MainWindow$6.class" SelfReg="false" Sequence="82"/>
+    <ROW File="MainWindow_7.class" Component_="AddEngineDialog_1.class" FileName="MainWi~7.cla|MainWindow$7.class" Attributes="0" SourcePath="..\bin\com\orinus\view\MainWindow$7.class" SelfReg="false" Sequence="83"/>
+    <ROW File="MainWindow_8.class" Component_="AddEngineDialog_1.class" FileName="MainWi~8.cla|MainWindow$8.class" Attributes="0" SourcePath="..\bin\com\orinus\view\MainWindow$8.class" SelfReg="false" Sequence="84"/>
+    <ROW File="ManageHostDialog.class" Component_="AddEngineDialog_1.class" FileName="Manage~6.cla|ManageHostDialog.class" Attributes="0" SourcePath="..\bin\com\orinus\view\ManageHostDialog.class" SelfReg="false" Sequence="91"/>
+    <ROW File="ManageHostDialog_1.class" Component_="AddEngineDialog_1.class" FileName="Manage~1.cla|ManageHostDialog$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\ManageHostDialog$1.class" SelfReg="false" Sequence="86"/>
+    <ROW File="ManageHostDialog_2.class" Component_="AddEngineDialog_1.class" FileName="Manage~2.cla|ManageHostDialog$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\ManageHostDialog$2.class" SelfReg="false" Sequence="87"/>
+    <ROW File="ManageHostDialog_3.class" Component_="AddEngineDialog_1.class" FileName="Manage~3.cla|ManageHostDialog$3.class" Attributes="0" SourcePath="..\bin\com\orinus\view\ManageHostDialog$3.class" SelfReg="false" Sequence="88"/>
+    <ROW File="ManageHostDialog_4.class" Component_="AddEngineDialog_1.class" FileName="Manage~4.cla|ManageHostDialog$4.class" Attributes="0" SourcePath="..\bin\com\orinus\view\ManageHostDialog$4.class" SelfReg="false" Sequence="89"/>
+    <ROW File="ManageHostDialog_5.class" Component_="AddEngineDialog_1.class" FileName="Manage~5.cla|ManageHostDialog$5.class" Attributes="0" SourcePath="..\bin\com\orinus\view\ManageHostDialog$5.class" SelfReg="false" Sequence="90"/>
+    <ROW File="OpenEngineDialog.class" Component_="AddEngineDialog_1.class" FileName="OpenE~11.cla|OpenEngineDialog.class" Attributes="0" SourcePath="..\bin\com\orinus\view\OpenEngineDialog.class" SelfReg="false" Sequence="102"/>
+    <ROW File="OpenEngineDialog_1.class" Component_="AddEngineDialog_1.class" FileName="OpenEn~1.cla|OpenEngineDialog$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\OpenEngineDialog$1.class" SelfReg="false" Sequence="92"/>
+    <ROW File="OpenEngineDialog_10.class" Component_="AddEngineDialog_1.class" FileName="OpenEn~2.cla|OpenEngineDialog$10.class" Attributes="0" SourcePath="..\bin\com\orinus\view\OpenEngineDialog$10.class" SelfReg="false" Sequence="93"/>
+    <ROW File="OpenEngineDialog_2.class" Component_="AddEngineDialog_1.class" FileName="OpenEn~3.cla|OpenEngineDialog$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\OpenEngineDialog$2.class" SelfReg="false" Sequence="94"/>
+    <ROW File="OpenEngineDialog_3.class" Component_="AddEngineDialog_1.class" FileName="OpenEn~4.cla|OpenEngineDialog$3.class" Attributes="0" SourcePath="..\bin\com\orinus\view\OpenEngineDialog$3.class" SelfReg="false" Sequence="95"/>
+    <ROW File="OpenEngineDialog_4.class" Component_="AddEngineDialog_1.class" FileName="OpenEn~5.cla|OpenEngineDialog$4.class" Attributes="0" SourcePath="..\bin\com\orinus\view\OpenEngineDialog$4.class" SelfReg="false" Sequence="96"/>
+    <ROW File="OpenEngineDialog_5.class" Component_="AddEngineDialog_1.class" FileName="OpenEn~6.cla|OpenEngineDialog$5.class" Attributes="0" SourcePath="..\bin\com\orinus\view\OpenEngineDialog$5.class" SelfReg="false" Sequence="97"/>
+    <ROW File="OpenEngineDialog_6.class" Component_="AddEngineDialog_1.class" FileName="OpenEn~7.cla|OpenEngineDialog$6.class" Attributes="0" SourcePath="..\bin\com\orinus\view\OpenEngineDialog$6.class" SelfReg="false" Sequence="98"/>
+    <ROW File="OpenEngineDialog_7.class" Component_="AddEngineDialog_1.class" FileName="OpenEn~8.cla|OpenEngineDialog$7.class" Attributes="0" SourcePath="..\bin\com\orinus\view\OpenEngineDialog$7.class" SelfReg="false" Sequence="99"/>
+    <ROW File="OpenEngineDialog_8.class" Component_="AddEngineDialog_1.class" FileName="OpenEn~9.cla|OpenEngineDialog$8.class" Attributes="0" SourcePath="..\bin\com\orinus\view\OpenEngineDialog$8.class" SelfReg="false" Sequence="100"/>
+    <ROW File="OpenEngineDialog_9.class" Component_="AddEngineDialog_1.class" FileName="OpenE~10.cla|OpenEngineDialog$9.class" Attributes="0" SourcePath="..\bin\com\orinus\view\OpenEngineDialog$9.class" SelfReg="false" Sequence="101"/>
+    <ROW File="OpenEnginePage.class" Component_="AddEnginePage.class" FileName="OpenEn~1.cla|OpenEnginePage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\OpenEnginePage.class" SelfReg="false" Sequence="124"/>
+    <ROW File="Orinus.exe" Component_="Orinus.exe" FileName="Orinus.exe" Attributes="0" SourcePath="&lt;AI_STUBS&gt;aijclw.exe" SelfReg="false" Sequence="1" DigSign="true"/>
+    <ROW File="OrinusWS.exe" Component_="OrinusWS.exe" FileName="OrinusWS.exe" Attributes="0" SourcePath="&lt;AI_STUBS&gt;aijcl.exe" SelfReg="false" Sequence="2" DigSign="true"/>
+    <ROW File="RemoteHandler.class" Component_="ImExTool.class" FileName="Remote~1.cla|RemoteHandler.class" Attributes="0" SourcePath="..\bin\com\orinus\script\RemoteHandler.class" SelfReg="false" Sequence="31"/>
+    <ROW File="Router.class" Component_="AddEnginePage.class" FileName="Router~4.cla|Router.class" Attributes="0" SourcePath="..\bin\com\orinus\web\Router.class" SelfReg="false" Sequence="148"/>
+    <ROW File="Router_DataHandler.class" Component_="AddEnginePage.class" FileName="Router~1.cla|Router$DataHandler.class" Attributes="0" SourcePath="..\bin\com\orinus\web\Router$DataHandler.class" SelfReg="false" Sequence="145"/>
+    <ROW File="Router_FolderMark.class" Component_="AddEnginePage.class" FileName="Router~2.cla|Router$FolderMark.class" Attributes="0" SourcePath="..\bin\com\orinus\web\Router$FolderMark.class" SelfReg="false" Sequence="146"/>
+    <ROW File="Router_RequestWraper.class" Component_="AddEnginePage.class" FileName="Router~3.cla|Router$RequestWraper.class" Attributes="0" SourcePath="..\bin\com\orinus\web\Router$RequestWraper.class" SelfReg="false" Sequence="147"/>
+    <ROW File="Runner.class" Component_="Config.class" FileName="Runner~2.cla|Runner.class" Attributes="0" SourcePath="..\bin\com\orinus\Runner.class" SelfReg="false" Sequence="13"/>
+    <ROW File="Runner_SpiderTask.class" Component_="Config.class" FileName="Runner~1.cla|Runner$SpiderTask.class" Attributes="0" SourcePath="..\bin\com\orinus\Runner$SpiderTask.class" SelfReg="false" Sequence="12"/>
+    <ROW File="SConnection.class" Component_="SConnection.class" FileName="SConne~1.cla|SConnection.class" Attributes="0" SourcePath="..\bin\com\orinus\script\safe\jsoup\SConnection.class" SelfReg="false" Sequence="35"/>
+    <ROW File="SEntity.class" Component_="SEntity_Handler.class" FileName="SEntit~2.cla|SEntity.class" Attributes="0" SourcePath="..\bin\com\orinus\script\safe\lucene\SEntity.class" SelfReg="false" Sequence="38"/>
+    <ROW File="SEntity_Handler.class" Component_="SEntity_Handler.class" FileName="SEntit~1.cla|SEntity$Handler.class" Attributes="0" SourcePath="..\bin\com\orinus\script\safe\lucene\SEntity$Handler.class" SelfReg="false" Sequence="37"/>
+    <ROW File="SJsoup.class" Component_="SConnection.class" FileName="SJsoup~1.cla|SJsoup.class" Attributes="0" SourcePath="..\bin\com\orinus\script\safe\jsoup\SJsoup.class" SelfReg="false" Sequence="36"/>
+    <ROW File="SMySQL.class" Component_="SMySQL.class" FileName="SMySQL~1.cla|SMySQL.class" Attributes="0" SourcePath="..\bin\com\orinus\script\safe\mysql\SMySQL.class" SelfReg="false" Sequence="39"/>
+    <ROW File="SRequest.class" Component_="SRequest_FileEntry.class" FileName="SReque~2.cla|SRequest.class" Attributes="0" SourcePath="..\bin\com\orinus\script\safe\jetty\SRequest.class" SelfReg="false" Sequence="33"/>
+    <ROW File="SRequest_FileEntry.class" Component_="SRequest_FileEntry.class" FileName="SReque~1.cla|SRequest$FileEntry.class" Attributes="0" SourcePath="..\bin\com\orinus\script\safe\jetty\SRequest$FileEntry.class" SelfReg="false" Sequence="32"/>
+    <ROW File="SResponse.class" Component_="SRequest_FileEntry.class" FileName="SRespo~1.cla|SResponse.class" Attributes="0" SourcePath="..\bin\com\orinus\script\safe\jetty\SResponse.class" SelfReg="false" Sequence="34"/>
+    <ROW File="SZip.class" Component_="SZip_FileEntry.class" FileName="SZip~1.cla|SZip.class" Attributes="0" SourcePath="..\bin\com\orinus\script\safe\zip\SZip.class" SelfReg="false" Sequence="41"/>
+    <ROW File="SZip_FileEntry.class" Component_="SZip_FileEntry.class" FileName="SZip$F~1.cla|SZip$FileEntry.class" Attributes="0" SourcePath="..\bin\com\orinus\script\safe\zip\SZip$FileEntry.class" SelfReg="false" Sequence="40"/>
+    <ROW File="ScheduleDialog.class" Component_="AddEngineDialog_1.class" FileName="Schedu~3.cla|ScheduleDialog.class" Attributes="0" SourcePath="..\bin\com\orinus\view\ScheduleDialog.class" SelfReg="false" Sequence="105"/>
+    <ROW File="ScheduleDialog_1.class" Component_="AddEngineDialog_1.class" FileName="Schedu~1.cla|ScheduleDialog$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\ScheduleDialog$1.class" SelfReg="false" Sequence="103"/>
+    <ROW File="ScheduleDialog_2.class" Component_="AddEngineDialog_1.class" FileName="Schedu~2.cla|ScheduleDialog$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\ScheduleDialog$2.class" SelfReg="false" Sequence="104"/>
+    <ROW File="SchedulePage.class" Component_="AddEnginePage.class" FileName="Schedu~1.cla|SchedulePage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\SchedulePage.class" SelfReg="false" Sequence="149"/>
+    <ROW File="SettingsDialog.class" Component_="AddEngineDialog_1.class" FileName="Settin~6.cla|SettingsDialog.class" Attributes="0" SourcePath="..\bin\com\orinus\view\SettingsDialog.class" SelfReg="false" Sequence="111"/>
+    <ROW File="SettingsDialog_1.class" Component_="AddEngineDialog_1.class" FileName="Settin~1.cla|SettingsDialog$1.class" Attributes="0" SourcePath="..\bin\com\orinus\view\SettingsDialog$1.class" SelfReg="false" Sequence="106"/>
+    <ROW File="SettingsDialog_2.class" Component_="AddEngineDialog_1.class" FileName="Settin~2.cla|SettingsDialog$2.class" Attributes="0" SourcePath="..\bin\com\orinus\view\SettingsDialog$2.class" SelfReg="false" Sequence="107"/>
+    <ROW File="SettingsDialog_3.class" Component_="AddEngineDialog_1.class" FileName="Settin~3.cla|SettingsDialog$3.class" Attributes="0" SourcePath="..\bin\com\orinus\view\SettingsDialog$3.class" SelfReg="false" Sequence="108"/>
+    <ROW File="SettingsDialog_4.class" Component_="AddEngineDialog_1.class" FileName="Settin~4.cla|SettingsDialog$4.class" Attributes="0" SourcePath="..\bin\com\orinus\view\SettingsDialog$4.class" SelfReg="false" Sequence="109"/>
+    <ROW File="SettingsDialog_5.class" Component_="AddEngineDialog_1.class" FileName="Settin~5.cla|SettingsDialog$5.class" Attributes="0" SourcePath="..\bin\com\orinus\view\SettingsDialog$5.class" SelfReg="false" Sequence="110"/>
+    <ROW File="SettingsPage.class" Component_="AddEnginePage.class" FileName="Settin~1.cla|SettingsPage.class" Attributes="0" SourcePath="..\bin\com\orinus\web\SettingsPage.class" SelfReg="false" Sequence="150"/>
+    <ROW File="Spider.class" Component_="Config.class" FileName="Spider~5.cla|Spider.class" Attributes="0" SourcePath="..\bin\com\orinus\Spider.class" SelfReg="false" Sequence="46"/>
+    <ROW File="Spider_CleanTask.class" Component_="Config.class" FileName="Spider~1.cla|Spider$CleanTask.class" Attributes="0" SourcePath="..\bin\com\orinus\Spider$CleanTask.class" SelfReg="false" Sequence="42"/>
+    <ROW File="Spider_DataHandler.class" Component_="Config.class" FileName="Spider~2.cla|Spider$DataHandler.class" Attributes="0" SourcePath="..\bin\com\orinus\Spider$DataHandler.class" SelfReg="false" Sequence="43"/>
+    <ROW File="Spider_FolderMark.class" Component_="Config.class" FileName="Spider~3.cla|Spider$FolderMark.class" Attributes="0" SourcePath="..\bin\com\orinus\Spider$FolderMark.class" SelfReg="false" Sequence="44"/>
+    <ROW File="Spider_SpiderTask.class" Component_="Config.class" FileName="Spider~4.cla|Spider$SpiderTask.class" Attributes="0" SourcePath="..\bin\com\orinus\Spider$SpiderTask.class" SelfReg="false" Sequence="45"/>
+    <ROW File="Thumbs.db" Component_="minus.png" FileName="Thumbs.db" Attributes="2" SourcePath="..\bin\com\orinus\web\resource\images\Thumbs.db" SelfReg="false" Sequence="127"/>
+    <ROW File="UITool.class" Component_="Config.class" FileName="UITool~1.cla|UITool.class" Attributes="0" SourcePath="..\bin\com\orinus\UITool.class" SelfReg="false" Sequence="47"/>
+    <ROW File="add_engine.vm" Component_="add_engine.vm" FileName="add-en~1.vm|add-engine.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\add-engine.vm" SelfReg="false" Sequence="131"/>
+    <ROW File="add_file.vm" Component_="add_engine.vm" FileName="add-file.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\add-file.vm" SelfReg="false" Sequence="132"/>
+    <ROW File="add_folder.vm" Component_="add_engine.vm" FileName="add-fo~1.vm|add-folder.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\add-folder.vm" SelfReg="false" Sequence="133"/>
+    <ROW File="com.sun.el_2.2.0.v201108011116.jar" Component_="log4j_1.2.8.jar" FileName="comsun~1.jar|com.sun.el-2.2.0.v201108011116.jar" Attributes="0" SourcePath="..\lib\jetty\jsp\com.sun.el-2.2.0.v201108011116.jar" SelfReg="false" Sequence="184"/>
+    <ROW File="common.css" Component_="common.css" FileName="common.css" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\styles\common.css" SelfReg="false" Sequence="130"/>
+    <ROW File="commons_beanutils_1.8.0.jar" Component_="log4j_1.2.8.jar" FileName="common~1.jar|commons-beanutils-1.8.0.jar" Attributes="0" SourcePath="..\lib\json\commons-beanutils-1.8.0.jar" SelfReg="false" Sequence="201"/>
+    <ROW File="commons_collections_3.2.1.jar" Component_="log4j_1.2.8.jar" FileName="common~2.jar|commons-collections-3.2.1.jar" Attributes="0" SourcePath="..\lib\json\commons-collections-3.2.1.jar" SelfReg="false" Sequence="202"/>
+    <ROW File="commons_fileupload_1.2.2.jar" Component_="log4j_1.2.8.jar" FileName="common~5.jar|commons-fileupload-1.2.2.jar" Attributes="0" SourcePath="..\lib\fileupload\commons-fileupload-1.2.2.jar" SelfReg="false" Sequence="209"/>
+    <ROW File="commons_io_2.3.jar" Component_="log4j_1.2.8.jar" FileName="common~6.jar|commons-io-2.3.jar" Attributes="0" SourcePath="..\lib\fileupload\commons-io-2.3.jar" SelfReg="false" Sequence="210"/>
+    <ROW File="commons_lang_2.5.jar" Component_="log4j_1.2.8.jar" FileName="common~3.jar|commons-lang-2.5.jar" Attributes="0" SourcePath="..\lib\json\commons-lang-2.5.jar" SelfReg="false" Sequence="203"/>
+    <ROW File="commons_logging_1.1.1.jar" Component_="log4j_1.2.8.jar" FileName="common~4.jar|commons-logging-1.1.1.jar" Attributes="0" SourcePath="..\lib\json\commons-logging-1.1.1.jar" SelfReg="false" Sequence="204"/>
+    <ROW File="config.properties" Component_="config.properties" FileName="config~1.pro|config.properties" Attributes="0" SourcePath="..\cfg\config.properties" SelfReg="false" Sequence="211"/>
+    <ROW File="edit_engine.vm" Component_="add_engine.vm" FileName="edit-e~1.vm|edit-engine.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\edit-engine.vm" SelfReg="false" Sequence="134"/>
+    <ROW File="edit_file.vm" Component_="add_engine.vm" FileName="edit-f~1.vm|edit-file.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\edit-file.vm" SelfReg="false" Sequence="135"/>
+    <ROW File="edit_folder.vm" Component_="add_engine.vm" FileName="edit-f~2.vm|edit-folder.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\edit-folder.vm" SelfReg="false" Sequence="136"/>
+    <ROW File="en.lang" Component_="en.lang" FileName="en~1.lan|en.lang" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\languages\en.lang" SelfReg="false" Sequence="128"/>
+    <ROW File="ezmorph_1.0.6.jar" Component_="log4j_1.2.8.jar" FileName="ezmorp~1.jar|ezmorph-1.0.6.jar" Attributes="0" SourcePath="..\lib\json\ezmorph-1.0.6.jar" SelfReg="false" Sequence="205"/>
+    <ROW File="home_offline.vm" Component_="add_engine.vm" FileName="home-o~1.vm|home-offline.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\home-offline.vm" SelfReg="false" Sequence="137"/>
+    <ROW File="home_online.vm" Component_="add_engine.vm" FileName="home-o~2.vm|home-online.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\home-online.vm" SelfReg="false" Sequence="138"/>
+    <ROW File="import.vm" Component_="add_engine.vm" FileName="import.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\import.vm" SelfReg="false" Sequence="139"/>
+    <ROW File="javax.activation_1.1.0.v201105071233.jar" Component_="log4j_1.2.8.jar" FileName="javaxa~2.jar|javax.activation-1.1.0.v201105071233.jar" Attributes="0" SourcePath="..\lib\jetty\jndi\javax.activation-1.1.0.v201105071233.jar" SelfReg="false" Sequence="182"/>
+    <ROW File="javax.annotation_1.1.0.v201108011116.jar" Component_="log4j_1.2.8.jar" FileName="javaxa~1.jar|javax.annotation-1.1.0.v201108011116.jar" Attributes="0" SourcePath="..\lib\jetty\annotations\javax.annotation-1.1.0.v201108011116.jar" SelfReg="false" Sequence="180"/>
+    <ROW File="javax.el_2.2.0.v201108011116.jar" Component_="log4j_1.2.8.jar" FileName="javaxe~1.jar|javax.el-2.2.0.v201108011116.jar" Attributes="0" SourcePath="..\lib\jetty\jsp\javax.el-2.2.0.v201108011116.jar" SelfReg="false" Sequence="185"/>
+    <ROW File="javax.mail.glassfish_1.4.1.v201005082020.jar" Component_="log4j_1.2.8.jar" FileName="javaxm~1.jar|javax.mail.glassfish-1.4.1.v201005082020.jar" Attributes="0" SourcePath="..\lib\jetty\jndi\javax.mail.glassfish-1.4.1.v201005082020.jar" SelfReg="false" Sequence="183"/>
+    <ROW File="javax.servlet.jsp.jstl_1.2.0.v201105211821.jar" Component_="log4j_1.2.8.jar" FileName="javaxs~1.jar|javax.servlet.jsp.jstl-1.2.0.v201105211821.jar" Attributes="0" SourcePath="..\lib\jetty\jsp\javax.servlet.jsp.jstl-1.2.0.v201105211821.jar" SelfReg="false" Sequence="186"/>
+    <ROW File="javax.servlet.jsp_2.2.0.v201112011158.jar" Component_="log4j_1.2.8.jar" FileName="javaxs~2.jar|javax.servlet.jsp-2.2.0.v201112011158.jar" Attributes="0" SourcePath="..\lib\jetty\jsp\javax.servlet.jsp-2.2.0.v201112011158.jar" SelfReg="false" Sequence="187"/>
+    <ROW File="javax.transaction_1.1.1.v201105210645.jar" Component_="log4j_1.2.8.jar" FileName="javaxt~1.jar|javax.transaction-1.1.1.v201105210645.jar" Attributes="0" SourcePath="..\lib\jetty\jta\javax.transaction-1.1.1.v201105210645.jar" SelfReg="false" Sequence="191"/>
+    <ROW File="jetty_ajp_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty-~2.jar|jetty-ajp-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-ajp-8.1.3.v20120416.jar" SelfReg="false" Sequence="160"/>
+    <ROW File="jetty_annotations_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty-~3.jar|jetty-annotations-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-annotations-8.1.3.v20120416.jar" SelfReg="false" Sequence="161"/>
+    <ROW File="jetty_client_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty-~4.jar|jetty-client-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-client-8.1.3.v20120416.jar" SelfReg="false" Sequence="162"/>
+    <ROW File="jetty_continuation_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty-~5.jar|jetty-continuation-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-continuation-8.1.3.v20120416.jar" SelfReg="false" Sequence="163"/>
+    <ROW File="jetty_deploy_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty-~6.jar|jetty-deploy-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-deploy-8.1.3.v20120416.jar" SelfReg="false" Sequence="164"/>
+    <ROW File="jetty_http_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty-~7.jar|jetty-http-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-http-8.1.3.v20120416.jar" SelfReg="false" Sequence="165"/>
+    <ROW File="jetty_io_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty-~8.jar|jetty-io-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-io-8.1.3.v20120416.jar" SelfReg="false" Sequence="166"/>
+    <ROW File="jetty_jmx_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty-~9.jar|jetty-jmx-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-jmx-8.1.3.v20120416.jar" SelfReg="false" Sequence="167"/>
+    <ROW File="jetty_jndi_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~10.jar|jetty-jndi-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-jndi-8.1.3.v20120416.jar" SelfReg="false" Sequence="168"/>
+    <ROW File="jetty_monitor_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~22.jar|jetty-monitor-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\monitor\jetty-monitor-8.1.3.v20120416.jar" SelfReg="false" Sequence="192"/>
+    <ROW File="jetty_overlay_deployer_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~11.jar|jetty-overlay-deployer-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-overlay-deployer-8.1.3.v20120416.jar" SelfReg="false" Sequence="169"/>
+    <ROW File="jetty_plus_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~12.jar|jetty-plus-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-plus-8.1.3.v20120416.jar" SelfReg="false" Sequence="170"/>
+    <ROW File="jetty_policy_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~13.jar|jetty-policy-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-policy-8.1.3.v20120416.jar" SelfReg="false" Sequence="171"/>
+    <ROW File="jetty_rewrite_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~14.jar|jetty-rewrite-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-rewrite-8.1.3.v20120416.jar" SelfReg="false" Sequence="172"/>
+    <ROW File="jetty_security_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~15.jar|jetty-security-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-security-8.1.3.v20120416.jar" SelfReg="false" Sequence="173"/>
+    <ROW File="jetty_server_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty-~1.jar|jetty-server-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-server-8.1.3.v20120416.jar" SelfReg="false" Sequence="158"/>
+    <ROW File="jetty_servlet_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~16.jar|jetty-servlet-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-servlet-8.1.3.v20120416.jar" SelfReg="false" Sequence="174"/>
+    <ROW File="jetty_servlets_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~17.jar|jetty-servlets-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-servlets-8.1.3.v20120416.jar" SelfReg="false" Sequence="175"/>
+    <ROW File="jetty_util_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~18.jar|jetty-util-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-util-8.1.3.v20120416.jar" SelfReg="false" Sequence="176"/>
+    <ROW File="jetty_webapp_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~19.jar|jetty-webapp-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-webapp-8.1.3.v20120416.jar" SelfReg="false" Sequence="177"/>
+    <ROW File="jetty_websocket_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~20.jar|jetty-websocket-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-websocket-8.1.3.v20120416.jar" SelfReg="false" Sequence="178"/>
+    <ROW File="jetty_xml_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="jetty~21.jar|jetty-xml-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\jetty-xml-8.1.3.v20120416.jar" SelfReg="false" Sequence="179"/>
+    <ROW File="jface.jar" Component_="log4j_1.2.8.jar" FileName="jface.jar" Attributes="1" SourcePath="..\lib\swt\jface.jar" SelfReg="false" Sequence="152"/>
+    <ROW File="jfacetext.jar" Component_="log4j_1.2.8.jar" FileName="jfacet~1.jar|jfacetext.jar" Attributes="1" SourcePath="..\lib\swt\jfacetext.jar" SelfReg="false" Sequence="153"/>
+    <ROW File="jquery_1.7.2.min.js" Component_="jquery_1.7.2.min.js" FileName="jquery~1.js|jquery-1.7.2.min.js" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\scripts\jquery-1.7.2.min.js" SelfReg="false" Sequence="129"/>
+    <ROW File="js.jar" Component_="log4j_1.2.8.jar" FileName="js.jar" Attributes="0" SourcePath="..\lib\rhino\js.jar" SelfReg="false" Sequence="207"/>
+    <ROW File="json_lib_2.4_jdk15.jar" Component_="log4j_1.2.8.jar" FileName="json-l~1.jar|json-lib-2.4-jdk15.jar" Attributes="0" SourcePath="..\lib\json\json-lib-2.4-jdk15.jar" SelfReg="false" Sequence="206"/>
+    <ROW File="jsoup_1.6.2.jar" Component_="log4j_1.2.8.jar" FileName="jsoup-~1.jar|jsoup-1.6.2.jar" Attributes="0" SourcePath="..\lib\jsoup\jsoup-1.6.2.jar" SelfReg="false" Sequence="196"/>
+    <ROW File="log.vm" Component_="add_engine.vm" FileName="log.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\log.vm" SelfReg="false" Sequence="140"/>
+    <ROW File="log4j_1.2.8.jar" Component_="log4j_1.2.8.jar" FileName="log4j-~1.jar|log4j-1.2.8.jar" Attributes="1" SourcePath="..\lib\log4j\log4j-1.2.8.jar" SelfReg="false" Sequence="151"/>
+    <ROW File="log_conf.xml" Component_="config.properties" FileName="log-conf.xml" Attributes="0" SourcePath="..\cfg\log-conf.xml" SelfReg="false" Sequence="213"/>
+    <ROW File="log_conf_ws.xml" Component_="config.properties" FileName="log-co~1.xml|log-conf-ws.xml" Attributes="0" SourcePath="..\cfg\log-conf-ws.xml" SelfReg="false" Sequence="212"/>
+    <ROW File="lucene_core_3.6.0.jar" Component_="log4j_1.2.8.jar" FileName="lucene~1.jar|lucene-core-3.6.0.jar" Attributes="0" SourcePath="..\lib\lucene\lucene-core-3.6.0.jar" SelfReg="false" Sequence="198"/>
+    <ROW File="lucene_highlighter_3.6.0.jar" Component_="log4j_1.2.8.jar" FileName="lucene~2.jar|lucene-highlighter-3.6.0.jar" Attributes="0" SourcePath="..\lib\lucene\lucene-highlighter-3.6.0.jar" SelfReg="false" Sequence="199"/>
+    <ROW File="lucene_memory_3.6.0.jar" Component_="log4j_1.2.8.jar" FileName="lucene~3.jar|lucene-memory-3.6.0.jar" Attributes="0" SourcePath="..\lib\lucene\lucene-memory-3.6.0.jar" SelfReg="false" Sequence="200"/>
+    <ROW File="minus.png" Component_="minus.png" FileName="minus.png" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\images\minus.png" SelfReg="false" Sequence="125"/>
+    <ROW File="mysql_connector_java_5.1.18_bin.jar" Component_="log4j_1.2.8.jar" FileName="mysql-~1.jar|mysql-connector-java-5.1.18-bin.jar" Attributes="0" SourcePath="..\lib\mysql\mysql-connector-java-5.1.18-bin.jar" SelfReg="false" Sequence="197"/>
+    <ROW File="open_engine.vm" Component_="add_engine.vm" FileName="open-e~2.vm|open-engine.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\open-engine.vm" SelfReg="false" Sequence="142"/>
+    <ROW File="open_engine_file.vm" Component_="add_engine.vm" FileName="open-e~1.vm|open-engine-file.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\open-engine-file.vm" SelfReg="false" Sequence="141"/>
+    <ROW File="org.apache.jasper.glassfish_2.2.2.v201112011158.jar" Component_="log4j_1.2.8.jar" FileName="orgapa~1.jar|org.apache.jasper.glassfish-2.2.2.v201112011158.jar" Attributes="0" SourcePath="..\lib\jetty\jsp\org.apache.jasper.glassfish-2.2.2.v201112011158.jar" SelfReg="false" Sequence="188"/>
+    <ROW File="org.apache.taglibs.standard.glassfish_1.2.0.v201112081803.jar" Component_="log4j_1.2.8.jar" FileName="orgapa~2.jar|org.apache.taglibs.standard.glassfish-1.2.0.v201112081803.jar" Attributes="0" SourcePath="..\lib\jetty\jsp\org.apache.taglibs.standard.glassfish-1.2.0.v201112081803.jar" SelfReg="false" Sequence="189"/>
+    <ROW File="org.eclipse.jdt.core_3.7.1.jar" Component_="log4j_1.2.8.jar" FileName="orgecl~1.jar|org.eclipse.jdt.core-3.7.1.jar" Attributes="0" SourcePath="..\lib\jetty\jsp\org.eclipse.jdt.core-3.7.1.jar" SelfReg="false" Sequence="190"/>
+    <ROW File="org.objectweb.asm_3.1.0.v200803061910.jar" Component_="log4j_1.2.8.jar" FileName="orgobj~1.jar|org.objectweb.asm-3.1.0.v200803061910.jar" Attributes="0" SourcePath="..\lib\jetty\annotations\org.objectweb.asm-3.1.0.v200803061910.jar" SelfReg="false" Sequence="181"/>
+    <ROW File="orinus_16x16.png" Component_="orinus_16x16.png" FileName="orinus~1.png|orinus-16x16.png" Attributes="0" SourcePath="..\bin\com\orinus\resource\images\orinus-16x16.png" SelfReg="false" Sequence="8"/>
+    <ROW File="osgi.jar" Component_="log4j_1.2.8.jar" FileName="osgi.jar" Attributes="1" SourcePath="..\lib\swt\osgi.jar" SelfReg="false" Sequence="154"/>
+    <ROW File="plus.png" Component_="minus.png" FileName="plus.png" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\images\plus.png" SelfReg="false" Sequence="126"/>
+    <ROW File="runtime.jar" Component_="log4j_1.2.8.jar" FileName="runtime.jar" Attributes="1" SourcePath="..\lib\swt\runtime.jar" SelfReg="false" Sequence="155"/>
+    <ROW File="schedule.vm" Component_="add_engine.vm" FileName="schedule.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\schedule.vm" SelfReg="false" Sequence="143"/>
+    <ROW File="servlet_api_3.0.jar" Component_="log4j_1.2.8.jar" FileName="servle~1.jar|servlet-api-3.0.jar" Attributes="0" SourcePath="..\lib\jetty\servlet-api-3.0.jar" SelfReg="false" Sequence="159"/>
+    <ROW File="settings.vm" Component_="add_engine.vm" FileName="settings.vm" Attributes="0" SourcePath="..\bin\com\orinus\web\resource\templates\settings.vm" SelfReg="false" Sequence="144"/>
+    <ROW File="spdy_core_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="spdy-c~1.jar|spdy-core-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\spdy\spdy-core-8.1.3.v20120416.jar" SelfReg="false" Sequence="193"/>
+    <ROW File="spdy_jetty_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="spdy-j~1.jar|spdy-jetty-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\spdy\spdy-jetty-8.1.3.v20120416.jar" SelfReg="false" Sequence="194"/>
+    <ROW File="spdy_jetty_http_8.1.3.v20120416.jar" Component_="log4j_1.2.8.jar" FileName="spdy-j~2.jar|spdy-jetty-http-8.1.3.v20120416.jar" Attributes="0" SourcePath="..\lib\jetty\spdy\spdy-jetty-http-8.1.3.v20120416.jar" SelfReg="false" Sequence="195"/>
+    <ROW File="swt.jar" Component_="log4j_1.2.8.jar" FileName="swt.jar" Attributes="0" SourcePath="..\lib\swt\swt.jar" SelfReg="false" Sequence="156"/>
+    <ROW File="text.jar" Component_="log4j_1.2.8.jar" FileName="text.jar" Attributes="1" SourcePath="..\lib\swt\text.jar" SelfReg="false" Sequence="157"/>
+    <ROW File="velocity_1.7_dep.jar" Component_="log4j_1.2.8.jar" FileName="veloci~1.jar|velocity-1.7-dep.jar" Attributes="0" SourcePath="..\lib\velocity\velocity-1.7-dep.jar" SelfReg="false" Sequence="208"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" Languages="en" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExeIconPath="Orinus.ico" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\install" ExeName="Orinus_Installer"/>
+    <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_FRAGS&gt;FolderDlg.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_FRAGS&gt;UI.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiActionTextComponent">
+    <ROW Action="AI_DeleteLzma" Description="Deleting files extracted from archive" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_DeleteRLzma" Description="Deleting files extracted from archive" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_ExtractLzma" Description="Extracting files from archive" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiAppSearchComponent">
+    <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_CU" Builds="DefaultBuild"/>
+    <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_LM" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+    <ROW Name="banner_image.jpg" SourcePath="&lt;AI_RES&gt;banner-image.jpg"/>
+    <ROW Name="dialog_image.jpg" SourcePath="&lt;AI_RES&gt;dialog-image.jpg"/>
+    <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ATTRIBUTE name="FixedSizeBitmaps" value="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="2"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="3"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="log_DIR" Component_="log"/>
+    <ROW Directory_="dat_DIR" Component_="dat"/>
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR"/>
+    <ROW Directory_="cfg_DIR" Component_="cfg"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DeleteCadLzma" Type="51" Source="AI_DeleteLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteLzma" Type="1025" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
+    <ROW Action="AI_DeleteRCadLzma" Type="51" Source="AI_DeleteRLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteRLzma" Type="1281" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
+    <ROW Action="AI_DetectJRE" Type="1" Source="aicustact.dll" Target="RequiredJreExists"/>
+    <ROW Action="AI_ExtractCadLzma" Type="51" Source="AI_ExtractLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_ExtractLzma" Type="1025" Source="lzmaextractor.dll" Target="ExtractLZMAFiles"/>
+    <ROW Action="AI_FindExeLzma" Type="1" Source="lzmaextractor.dll" Target="FindEXE"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="Orinus.exe" SourcePath="Orinus.ico" Index="0"/>
+    <ROW Name="SystemFolder_msiexec.exe" SourcePath="&lt;AI_RES&gt;uninstall.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIniFileComponent">
+    <ROW IniFile="Application_Type" FileName="Orinus.ini" DirProperty="APPDIR" Section="Application" Key="Application Type" Value="gui" Action="0" Component_="Orinus.exe"/>
+    <ROW IniFile="Application_Type_1" FileName="OrinusWS.ini" DirProperty="APPDIR" Section="Application" Key="Application Type" Value="service" Action="0" Component_="OrinusWS.exe"/>
+    <ROW IniFile="Class_Path" FileName="Orinus.ini" DirProperty="APPDIR" Section="Class Path" Key="Class Path" Value="[Orinus_DIR];[#log4j_1.2.8.jar];[#jface.jar];[#jfacetext.jar];[#osgi.jar];[#runtime.jar];[#swt.jar];[#text.jar];[#jetty_server_8.1.3.v20120416.jar];[#servlet_api_3.0.jar];[#jetty_ajp_8.1.3.v20120416.jar];[#jetty_annotations_8.1.3.v20120416.jar];[#jetty_client_8.1.3.v20120416.jar];[#jetty_continuation_8.1.3.v20120416.jar];[#jetty_deploy_8.1.3.v20120416.jar];[#jetty_http_8.1.3.v20120416.jar];[#jetty_io_8.1.3.v20120416.jar];[#jetty_jmx_8.1.3.v20120416.jar];[#jetty_jndi_8.1.3.v20120416.jar];[#jetty_overlay_deployer_8.1.3.v20120416.jar];[#jetty_plus_8.1.3.v20120416.jar];[#jetty_policy_8.1.3.v20120416.jar];[#jetty_rewrite_8.1.3.v20120416.jar];[#jetty_security_8.1.3.v20120416.jar];[#jetty_servlet_8.1.3.v20120416.jar];[#jetty_servlets_8.1.3.v20120416.jar];[#jetty_util_8.1.3.v20120416.jar];[#jetty_webapp_8.1.3.v20120416.jar];[#jetty_websocket_8.1.3.v20120416.jar];[#jetty_xml_8.1.3.v20120416.jar];[#javax.annotation_1.1.0.v201108011116.jar];[#org.objectweb.asm_3.1.0.v200803061910.jar];[#javax.activation_1.1.0.v201105071233.jar];[#javax.mail.glassfish_1.4.1.v201005082020.jar];[#com.sun.el_2.2.0.v201108011116.jar];[#javax.el_2.2.0.v201108011116.jar];[#javax.servlet.jsp.jstl_1.2.0.v201105211821.jar];[#javax.servlet.jsp_2.2.0.v201112011158.jar];[#org.apache.jasper.glassfish_2.2.2.v201112011158.jar];[#org.apache.taglibs.standard.glassfish_1.2.0.v201112081803.jar];[#org.eclipse.jdt.core_3.7.1.jar];[#javax.transaction_1.1.1.v201105210645.jar];[#jetty_monitor_8.1.3.v20120416.jar];[#spdy_core_8.1.3.v20120416.jar];[#spdy_jetty_8.1.3.v20120416.jar];[#spdy_jetty_http_8.1.3.v20120416.jar];[#jsoup_1.6.2.jar];[#mysql_connector_java_5.1.18_bin.jar];[#lucene_core_3.6.0.jar];[#lucene_highlighter_3.6.0.jar];[#lucene_memory_3.6.0.jar];[#commons_beanutils_1.8.0.jar];[#commons_collections_3.2.1.jar];[#commons_lang_2.5.jar];[#commons_logging_1.1.1.jar];[#ezmorph_1.0.6.jar];[#json_lib_2.4_jdk15.jar];[#js.jar];[#velocity_1.7_dep.jar];[#commons_fileupload_1.2.2.jar];[#commons_io_2.3.jar];" Action="0" Component_="Orinus.exe"/>
+    <ROW IniFile="Class_Path_1" FileName="OrinusWS.ini" DirProperty="APPDIR" Section="Class Path" Key="Class Path" Value="[Orinus_DIR];[#log4j_1.2.8.jar];[#jface.jar];[#jfacetext.jar];[#osgi.jar];[#runtime.jar];[#swt.jar];[#text.jar];[#jetty_server_8.1.3.v20120416.jar];[#servlet_api_3.0.jar];[#jetty_ajp_8.1.3.v20120416.jar];[#jetty_annotations_8.1.3.v20120416.jar];[#jetty_client_8.1.3.v20120416.jar];[#jetty_continuation_8.1.3.v20120416.jar];[#jetty_deploy_8.1.3.v20120416.jar];[#jetty_http_8.1.3.v20120416.jar];[#jetty_io_8.1.3.v20120416.jar];[#jetty_jmx_8.1.3.v20120416.jar];[#jetty_jndi_8.1.3.v20120416.jar];[#jetty_overlay_deployer_8.1.3.v20120416.jar];[#jetty_plus_8.1.3.v20120416.jar];[#jetty_policy_8.1.3.v20120416.jar];[#jetty_rewrite_8.1.3.v20120416.jar];[#jetty_security_8.1.3.v20120416.jar];[#jetty_servlet_8.1.3.v20120416.jar];[#jetty_servlets_8.1.3.v20120416.jar];[#jetty_util_8.1.3.v20120416.jar];[#jetty_webapp_8.1.3.v20120416.jar];[#jetty_websocket_8.1.3.v20120416.jar];[#jetty_xml_8.1.3.v20120416.jar];[#javax.annotation_1.1.0.v201108011116.jar];[#org.objectweb.asm_3.1.0.v200803061910.jar];[#javax.activation_1.1.0.v201105071233.jar];[#javax.mail.glassfish_1.4.1.v201005082020.jar];[#com.sun.el_2.2.0.v201108011116.jar];[#javax.el_2.2.0.v201108011116.jar];[#javax.servlet.jsp.jstl_1.2.0.v201105211821.jar];[#javax.servlet.jsp_2.2.0.v201112011158.jar];[#org.apache.jasper.glassfish_2.2.2.v201112011158.jar];[#org.apache.taglibs.standard.glassfish_1.2.0.v201112081803.jar];[#org.eclipse.jdt.core_3.7.1.jar];[#javax.transaction_1.1.1.v201105210645.jar];[#jetty_monitor_8.1.3.v20120416.jar];[#spdy_core_8.1.3.v20120416.jar];[#spdy_jetty_8.1.3.v20120416.jar];[#spdy_jetty_http_8.1.3.v20120416.jar];[#jsoup_1.6.2.jar];[#mysql_connector_java_5.1.18_bin.jar];[#lucene_core_3.6.0.jar];[#lucene_highlighter_3.6.0.jar];[#lucene_memory_3.6.0.jar];[#commons_beanutils_1.8.0.jar];[#commons_collections_3.2.1.jar];[#commons_lang_2.5.jar];[#commons_logging_1.1.1.jar];[#ezmorph_1.0.6.jar];[#json_lib_2.4_jdk15.jar];[#js.jar];[#velocity_1.7_dep.jar];[#commons_fileupload_1.2.2.jar];[#commons_io_2.3.jar];" Action="0" Component_="OrinusWS.exe"/>
+    <ROW IniFile="Failure_Check" FileName="Orinus.ini" DirProperty="APPDIR" Section="Application" Key="Failure Check" Value="yes" Action="0" Component_="Orinus.exe"/>
+    <ROW IniFile="Main_Class" FileName="Orinus.ini" DirProperty="APPDIR" Section="Java Runtime Environment" Key="Main Class" Value="com.orinus.Runner" Action="0" Component_="Orinus.exe"/>
+    <ROW IniFile="Main_Class_1" FileName="OrinusWS.ini" DirProperty="APPDIR" Section="Java Runtime Environment" Key="Main Class" Value="com.orinus.Runner" Action="0" Component_="OrinusWS.exe"/>
+    <ROW IniFile="Maximum_Version" FileName="Orinus.ini" DirProperty="APPDIR" Section="Java Runtime Environment" Key="Maximum Version" Value="any" Action="0" Component_="Orinus.exe"/>
+    <ROW IniFile="Maximum_Version_1" FileName="OrinusWS.ini" DirProperty="APPDIR" Section="Java Runtime Environment" Key="Maximum Version" Value="any" Action="0" Component_="OrinusWS.exe"/>
+    <ROW IniFile="Minimum_Version" FileName="Orinus.ini" DirProperty="APPDIR" Section="Java Runtime Environment" Key="Minimum Version" Value="1.6" Action="0" Component_="Orinus.exe"/>
+    <ROW IniFile="Minimum_Version_1" FileName="OrinusWS.ini" DirProperty="APPDIR" Section="Java Runtime Environment" Key="Minimum Version" Value="1.6" Action="0" Component_="OrinusWS.exe"/>
+    <ROW IniFile="Virtual_Machine_Parameters" FileName="OrinusWS.ini" DirProperty="APPDIR" Section="Java Runtime Environment" Key="Virtual Machine Parameters" Value="-Dmagic=4fa9f51572c6d -Duser.dir=&quot;[APPDIR]&quot; " Action="0" Component_="OrinusWS.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="Not Installed" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_DeleteCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (NOT PATCH)" Sequence="199" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (NOT PATCH)" Sequence="198" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (NOT PATCH)" Sequence="197" Builds="DefaultBuild"/>
+    <ROW Action="AI_FindExeLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (NOT PATCH)" Sequence="196" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (NOT PATCH)" Sequence="1549" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (NOT PATCH)" Sequence="1548" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (NOT PATCH)" Sequence="6599" Builds="DefaultBuild"/>
+    <ROW Action="AI_DetectJRE" Condition="1" Sequence="399" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_DetectJRE" Condition="1" Sequence="399" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiJavaComponent">
+    <ROW Name="Orinus.exe" Launcher="Orinus.exe" MainClass="Main_Class" ClassPath="Class_Path" JREMin="Minimum_Version" JREMax="Maximum_Version" IconPath="Orinus.ico" AppType="Application_Type" PlusList="APPDIR;" MinusList="#Orinus.exe;#OrinusWS.exe;" MacDescription="[|CurrentJavaProductName] [|ProductVersion] © [|Manufacturer], Inc, 2012" MacBundleId="com.[|Manufacturer].[|ProductName].[|CurrentJavaProductName]" FailureCheck="Failure_Check" UACExecutionLevel="0"/>
+    <ROW Name="OrinusWS.exe" Launcher="OrinusWS.exe" MainClass="Main_Class_1" ClassPath="Class_Path_1" VMParams="Virtual_Machine_Parameters" JREMin="Minimum_Version_1" JREMax="Maximum_Version_1" AppType="Application_Type_1" MinusList="#Orinus.exe;#OrinusWS.exe;APPDIR;" MacDescription="[|CurrentJavaProductName] [|ProductVersion] © [|Manufacturer], Inc, 2012" MacBundleId="com.[|Manufacturer].[|ProductName].[|CurrentJavaProductName]" UACExecutionLevel="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="AI_JREVERFOUND = 1" Description="[ProductName] cannot be installed on systems with JRE version smaller than [AI_MINJREVERSION]" DescriptionLocId="AI.LaunchCondition.Jre" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLockPermComponent">
+    <ROW LockObject="log_DIR" Table="CreateFolder" User="Everyone" Permission="1931476991"/>
+    <ROW LockObject="dat_DIR" Table="CreateFolder" User="Everyone" Permission="1931476991"/>
+    <ROW LockObject="cfg_DIR" Table="CreateFolder" User="Everyone" Permission="1931476991"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegLocatorComponent">
+    <ROW Signature_="AI_EXE_PATH_CU" Root="1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
+    <ROW Signature_="AI_EXE_PATH_LM" Root="2" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="AI_ExePath" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Value="[AI_SETUPEXEPATH]" Component_="AI_ExePath"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiServCtrlComponent">
+    <ROW ServiceControl="OrinusWS.exe" Name="OrinusWS.exe" Event="161" Wait="1" Component_="OrinusWS.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiServInstComponent">
+    <ROW ServiceInstall="OrinusWS.exe" Name="OrinusWS.exe" DisplayName="Orinus - JavaScript SandBox" ServiceType="272" StartType="2" ErrorControl="1" Component_="OrinusWS.exe" Description="bHive F"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="Orinus" Directory_="SHORTCUTDIR" Name="Orinus" Component_="Orinus.exe" Target="[#Orinus.exe]" Hotkey="0" Icon_="Orinus.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="Orinus_JavaScript_SandBox" Directory_="DesktopFolder" Name="Orinus~1|Orinus - JavaScript SandBox" Component_="Orinus.exe" Target="[#Orinus.exe]" Hotkey="0" Icon_="Orinus.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="Uninstall" Directory_="SHORTCUTDIR" Name="Uninst~1|Uninstall" Component_="jquery_1.7.2.min.js" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" Hotkey="0" Icon_="SystemFolder_msiexec.exe" IconIndex="0" ShowCmd="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMax="[|ProductVersion]" Attributes="1025" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.SynchronizedFolderComponent">
+    <ROW Directory_="Orinus_DIR" SourcePath="..\bin"/>
+  </COMPONENT>
+</DOCUMENT>

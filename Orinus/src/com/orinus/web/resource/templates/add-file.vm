@@ -1,0 +1,81 @@
+﻿<html>
+<head>
+  <title>$lang.add_file_page_title | $lang.site_title</title>
+  <script src="$ROOT/scripts/jquery-1.7.2.min.js"></script>
+  <script>
+var ROOT = '$ROOT';
+
+function goClose() {
+  location = ROOT + '/open-engine.jsb?eid=$data.eid';
+}
+
+function goAdd() {
+  $('#form').submit();
+}
+
+function fileSelected() {
+  var filename = $('#e_file').val();
+  $('#e_name').val(filename);
+}
+  </script>
+  <link rel="stylesheet" type="text/css" href="$ROOT/styles/common.css" media="all"/>
+  <style>
+#file-add {
+  width: 300px;
+  margin: 20px auto;
+  height: 170px;
+  border: solid 1px gainsboro;
+}
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="topbar">
+      <center>
+      <a href="javascript:return false;" class="button" onclick="goAdd()">$lang.add_file_add</a>
+      <a href="javascript:return false;" class="button" onclick="goClose()">$lang.add_file_close</a>
+      </center>
+    </div>
+    <div id="workspace">
+      <form id="form" action="$ROOT/add-file.jsb?eid=$data.eid&pid=$data.pid" method="post" enctype="multipart/form-data">
+      <div id="file-add" class="form">
+        <div class="row first-row">
+$lang.add_file_name
+        </div>
+        <div class="row">
+<input id="e_name" type="textbox" class="textbox" name="name" value="$data.name" />
+        </div>
+        <div class="row">
+$lang.add_file_data
+        </div>
+        <div class="row">
+<input id="e_file" type="file" name="data" onchange="fileSelected()" />
+        </div>
+        <div class="row">
+#if ($data.published.equals("yes"))
+<input type="checkbox" name="published" value="yes" checked />
+#else 
+<input type="checkbox" name="published" value="yes" />
+#end
+$lang.add_file_published
+        </div>
+        <div class="message">
+#if ($data.message.equals("NameRequired"))
+$lang.add_file_name_required
+#end
+#if ($data.message.equals("NameExists"))
+$lang.add_file_name_exists
+#end
+#if ($data.message.equals("ExtensionRequired"))
+$lang.add_file_extension_required
+#end
+#if ($data.message.equals("DataNotExists"))
+$lang.add_file_data_not_exists
+#end
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

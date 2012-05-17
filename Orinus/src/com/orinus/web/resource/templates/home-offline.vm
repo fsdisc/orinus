@@ -1,0 +1,58 @@
+﻿<html>
+<head>
+  <title>$lang.home_page_title_offline | $lang.site_title</title>
+  <script src="$ROOT/scripts/jquery-1.7.2.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="$ROOT/styles/common.css" media="all"/>
+  <style>
+.login-pane {
+  width: 300px;
+  height: 130px;
+  border: solid 1px teal;
+  border-left: solid 5px teal;
+  margin: 50px auto;
+}
+.login-pane .row {
+  margin: 5px 10px 0px 10px;
+}
+.login-pane .row .textbox {
+  width: 100%;
+  border: solid 1px teal;
+}
+.login-pane .first-row {
+  margin-top: 10px;
+}
+.login-pane .row .button {
+  background-color: white;
+  border: solid 1px teal;
+  border-left: solid 5px teal;
+  cursor: pointer;
+  cursor: hand;
+}
+.login-pane .message {
+  color: red;
+  margin: 10px;
+  text-align: center;
+}
+  </style>
+</head>
+<body>
+  <form action="$ROOT/index.jsb" method="post">
+  <div class="login-pane">
+    <div class="row first-row">
+       $lang.home_password
+    </div>
+    <div class="row">
+       <input type="password" class="textbox" name="password" value="$data.password" />
+    </div>
+    <div class="row">
+      <center><input type="submit" class="button" value="$lang.home_login" /></center>
+    </div>
+    <div class="message">
+#if ($data.message.equals("PasswordNotMatch"))
+$lang.home_password_not_match
+#end
+    </div>
+  </div>
+  </form>
+</body>
+</html>

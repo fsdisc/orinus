@@ -1,0 +1,148 @@
+﻿<html>
+<head>
+  <title>$lang.settings_page_title | $lang.site_title</title>
+  <script src="$ROOT/scripts/jquery-1.7.2.min.js"></script>
+  <script>
+var ROOT = '$ROOT';
+
+function goClose() {
+  location = ROOT + '/';
+}
+
+function goNew() {
+  $('#stage').val('new-token');
+  $('#form').submit();
+}
+
+function goSave() {
+  $('#form').submit();
+}
+  </script>
+  <link rel="stylesheet" type="text/css" href="$ROOT/styles/common.css" media="all"/>
+  <style>
+#settings {
+  width: 300px;
+  margin: 20px auto;
+  height: 640px;
+  border: solid 1px gainsboro;
+}
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="topbar">
+      <center>
+      <a href="javascript:return false;" class="button" onclick="goNew()">$lang.settings_New</a>
+      <a href="javascript:return false;" class="button" onclick="goSave()">$lang.settings_save</a>
+      <a href="javascript:return false;" class="button" onclick="goClose()">$lang.settings_close</a>
+      </center>
+    </div>
+    <div id="workspace">
+      <form id="form" action="$ROOT/settings.jsb" method="post">
+      <div id="settings" class="form">
+        <div class="row first-row">
+$lang.settings_data
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="data" value="$data.data" />
+        </div>
+        <div class="row">
+$lang.settings_port
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="port" value="$data.port" />
+        </div>
+        <div class="row">
+$lang.settings_system
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="system" value="$data.system" />
+        </div>
+        <div class="row">
+$lang.settings_hosts
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="hosts" value="$data.hosts" />
+        </div>
+        <div class="row">
+$lang.settings_quota
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="quota" value="$data.quota" />
+        </div>
+        <div class="row">
+$lang.settings_magic
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="magic" value="$data.magic" />
+        </div>
+        <div class="row">
+$lang.settings_Timeout
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="timeout" value="$data.timeout" />
+        </div>
+        <div class="row">
+$lang.settings_Runtime
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="runtime" value="$data.runtime" />
+        </div>
+        <div class="row">
+$lang.settings_Token
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="token" value="$data.token" readonly="readonly" />
+        </div>
+        <div class="row">
+#if ($data.distributed.equals("yes"))
+<input type="checkbox" name="distributed" value="yes" checked />
+#else 
+<input type="checkbox" name="distributed" value="yes" />
+#end
+$lang.settings_Distributed
+        </div>
+        <div class="row">
+$lang.settings_RemoteHost
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="remote_host" value="$data.remote_host" />
+        </div>
+        <div class="row">
+$lang.settings_RemotePort
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="remote_port" value="$data.remote_port" />
+        </div>
+        <div class="row">
+$lang.settings_RemoteToken
+        </div>
+        <div class="row">
+<input type="textbox" class="textbox" name="remote_token" value="$data.remote_token" />
+        </div>
+        <div class="row">
+#if ($data.run_script.equals("yes"))
+<input type="checkbox" name="run_script" value="yes" checked />
+#else 
+<input type="checkbox" name="run_script" value="yes" />
+#end
+$lang.settings_run_script
+        </div>
+        <div class="message">
+#if ($data.message.equals("DataNotExists"))
+$lang.settings_DataNotExists
+#end
+#if ($data.message.equals("InvalidPort"))
+$lang.settings_InvalidPort
+#end
+#if ($data.message.equals("InvalidQuota"))
+$lang.settings_InvalidQuota
+#end
+        </div>
+        <input id="stage" type="hidden" name="stage" value="" />
+      </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

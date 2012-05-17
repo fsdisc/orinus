@@ -1,0 +1,53 @@
+﻿<html>
+<head>
+  <title>$lang.import_page_title | $lang.site_title</title>
+  <script src="$ROOT/scripts/jquery-1.7.2.min.js"></script>
+  <script>
+var ROOT = '$ROOT';
+
+function goClose() {
+  location = ROOT + '/open-engine.jsb?eid=$data.eid';
+}
+
+function goImport() {
+  $('#form').submit();
+}
+  </script>
+  <link rel="stylesheet" type="text/css" href="$ROOT/styles/common.css" media="all"/>
+  <style>
+#import {
+  width: 300px;
+  margin: 20px auto;
+  height: 100px;
+  border: solid 1px gainsboro;
+}
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="topbar">
+      <center>
+      <a href="javascript:return false;" class="button" onclick="goImport()">$lang.import_import</a>
+      <a href="javascript:return false;" class="button" onclick="goClose()">$lang.add_file_close</a>
+      </center>
+    </div>
+    <div id="workspace">
+      <form id="form" action="$ROOT/import.jsb?eid=$data.eid&fid=$data.fid" method="post" enctype="multipart/form-data">
+      <div id="import" class="form">
+        <div class="row first-row">
+$lang.import_data
+        </div>
+        <div class="row">
+<input type="file" name="data" />
+        </div>
+        <div class="message">
+#if ($data.message.equals("DataNotExists"))
+$lang.import_data_not_exists
+#end
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
