@@ -43,9 +43,9 @@ public class IOTool {
     			continue;
     		}
 
-    		(new File(zipFolderSrc + "\\" + zipEntry.getName())).getParentFile().mkdirs();
+    		(new File(zipFolderSrc, zipEntry.getName())).getParentFile().mkdirs();
     		InputStream in = zipFile.getInputStream(zipEntry);
-    		OutputStream out = new BufferedOutputStream(new FileOutputStream(zipFolderSrc + "\\" + zipEntry.getName()));
+    		OutputStream out = new BufferedOutputStream(new FileOutputStream(new File(zipFolderSrc, zipEntry.getName())));
     		byte[] buffer = new byte[1024];
     		int len;
     		while((len = in.read(buffer)) >= 0) {
