@@ -63,5 +63,6 @@
 	<classpathentry kind="lib" path="lib/fileupload/commons-fileupload-1.2.2.jar"/>
 	<classpathentry kind="lib" path="lib/fileupload/commons-io-2.3.jar"/>
 	<classpathentry kind="lib" path="lib/langdetect/langdetect.jar"/>
+	<classpathentry kind="lib" path="lib/langdetect/jsonic-1.0.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
