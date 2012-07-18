@@ -48,6 +48,7 @@ public class Controller {
     private String logDir;
     private String cfgFile;
     private String datDir;
+    private String extDir;
 
     public Controller() {
     	config = new Config();
@@ -56,6 +57,7 @@ public class Controller {
     	cfgDir = new File(appDir, "cfg").getAbsolutePath();
     	logDir = new File(appDir, "log").getAbsolutePath();
     	datDir = new File(appDir, "dat").getAbsolutePath();
+    	extDir = new File(appDir, "ext").getAbsolutePath();
     	cfgFile = new File(cfgDir, "config.properties").getAbsolutePath();
     	loadConfig();
     }
@@ -78,6 +80,10 @@ public class Controller {
     
     public String getLogDir() {
     	return logDir;
+    }
+
+    public String getExtDir() {
+    	return extDir;
     }
     
     public String getCfgFile() {
