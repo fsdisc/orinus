@@ -57,6 +57,8 @@ import org.mozilla.javascript.ContextFactory;
 import org.mozilla.javascript.Function;
 import org.mozilla.javascript.Scriptable;
 
+import com.cybozu.labs.langdetect.Detector;
+import com.cybozu.labs.langdetect.DetectorFactory;
 import com.orinus.Controller;
 import com.orinus.IOTool;
 import com.orinus.schema.Engine;
@@ -72,6 +74,7 @@ import com.orinus.script.safe.zip.SZip;
 
 public class Machine {
 
+	private static boolean langdetect = false;
     private Handler handler;
     private Engine engine;
     private Controller controller;
@@ -147,6 +150,7 @@ public class Machine {
                     if ("com.orinus.schema.FileData".equals(className)) return true;
                     if ("com.orinus.schema.FileItem".equals(className)) return true;
                     if ("com.orinus.schema.Folder".equals(className)) return true;
+                    if ("com.cybozu.labs.langdetect.Language".equals(className)) return true;
                     
                     return false;
                 }
@@ -393,6 +397,33 @@ public class Machine {
     
     public String merge(byte[] template, Map args) throws Exception {
     	return merge(new String(template, "UTF-8"), args);
+    }
+    
+    public String detectLang(String text) throws Exception {
+    	if (!langdetect) {
+    		DetectorFactory.loadProfile(new File(controller.getExtDir(), "langdetect").getAbsolutePath());
+    		langdetect = true;
+    	}
+    	Detector detector = DetectorFactory.create();
+        detector.append(text);
+        return detector.detect();    	
+    }
+    
+    public List<com.cybozu.labs.langdetect.Language> detectLangs(String text) throws Exception {
+    	if (!langdetect) {
+    		DetectorFactory.loadProfile(new File(controller.getExtDir(), "langdetect").getAbsolutePath());
+    		langdetect = true;
+    	}
+    	Detector detector = DetectorFactory.create();
+        detector.append(text);
+        return detector.getProbabilities();    	
+    }
+    
+    public void sleep(long ms) {
+    	try {
+    		Thread.sleep(ms);
+    	} catch (Exception e) {
+    	}
     }
     
     public Engine newEngine() {
