@@ -47,6 +47,7 @@ import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 
+import org.apache.log4j.Logger;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -74,6 +75,8 @@ import com.orinus.script.safe.zip.SZip;
 
 public class Machine {
 
+    private static Logger logger = Logger.getLogger(Machine.class);
+	
 	private static boolean langdetect = false;
     private Handler handler;
     private Engine engine;
@@ -399,24 +402,34 @@ public class Machine {
     	return merge(new String(template, "UTF-8"), args);
     }
     
-    public String detectLang(String text) throws Exception {
-    	if (!langdetect) {
-    		DetectorFactory.loadProfile(new File(controller.getExtDir(), "langdetect").getAbsolutePath());
-    		langdetect = true;
+    public String detectLang(String text) {
+    	try {
+        	if (!langdetect) {
+        		DetectorFactory.loadProfile(new File(controller.getExtDir(), "langdetect").getAbsolutePath());
+        		langdetect = true;
+        	}
+        	Detector detector = DetectorFactory.create();
+            detector.append(text);
+            return detector.detect();    	
+    	} catch (Throwable e) {
+    		logger.error("", e);
+    		return "";
     	}
-    	Detector detector = DetectorFactory.create();
-        detector.append(text);
-        return detector.detect();    	
     }
     
-    public List<com.cybozu.labs.langdetect.Language> detectLangs(String text) throws Exception {
-    	if (!langdetect) {
-    		DetectorFactory.loadProfile(new File(controller.getExtDir(), "langdetect").getAbsolutePath());
-    		langdetect = true;
+    public List<com.cybozu.labs.langdetect.Language> detectLangs(String text) {
+    	try {
+        	if (!langdetect) {
+        		DetectorFactory.loadProfile(new File(controller.getExtDir(), "langdetect").getAbsolutePath());
+        		langdetect = true;
+        	}
+        	Detector detector = DetectorFactory.create();
+            detector.append(text);
+            return detector.getProbabilities();    	
+    	} catch (Throwable e) {
+    		logger.error("", e);
+    		return new ArrayList<com.cybozu.labs.langdetect.Language>();
     	}
-    	Detector detector = DetectorFactory.create();
-        detector.append(text);
-        return detector.getProbabilities();    	
     }
     
     public void sleep(long ms) {
