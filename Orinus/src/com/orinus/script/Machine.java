@@ -482,6 +482,10 @@ public class Machine {
     	return null; 
     }
 
+    public SEntity newEntity(Map<String, String> conn) {
+    	return controller.newEntity(conn);
+    }
+    
     public LogItem newLogItem() {
     	if (handler != null) {
     		return handler.newLogItem();

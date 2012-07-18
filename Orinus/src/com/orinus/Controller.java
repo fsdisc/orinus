@@ -22,6 +22,7 @@ package com.orinus;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
@@ -258,6 +259,10 @@ public class Controller {
     	return new SEntity(new RemoteHandler(new LuceneHandler(t_index, t_backup, t_quota), engine));
     }
 
+    public SEntity newEntity(Map<String, String> conn) {
+    	return new SEntity(new RemoteHandler(conn));
+    }
+    
     public LogItem newLogItem(Engine engine) {
     	String t_data = getDatDir();
     	String t_engine = new File(t_data, "common").getAbsolutePath();

@@ -24,6 +24,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.search.Filter;
@@ -52,6 +53,8 @@ public class RemoteHandler extends SEntity.Handler {
 	private String remotePort;
 	private String remoteToken;
 	private String remoteUrl;
+	private boolean linked;
+	private Map<String, String> conn;
 	
 	public RemoteHandler(SEntity.Handler localHandler, Engine engine) {
 		this.controller = new Controller();
@@ -68,7 +71,30 @@ public class RemoteHandler extends SEntity.Handler {
 			this.remotePort = engine.getRemotePort() + "";
 			this.remoteToken = engine.getRemoteToken();
 		}
-		this.remoteUrl = "http://" + this.remoteHost + ":" + this.remotePort + "/api.jsb"; 
+		this.remoteUrl = "http://" + this.remoteHost + ":" + this.remotePort + "/api.jsb";
+		this.linked = true;
+		conn = null;
+	}
+
+	public RemoteHandler(Map<String, String> conn) {
+		this.controller = new Controller();
+		this.engine = null;
+		this.localHandler = null;
+		this.distributed = true;
+		this.remoteHost = conn.get("host");
+		this.remotePort = conn.get("port");
+		this.remoteToken = conn.get("token");
+		this.remoteUrl = "http://" + this.remoteHost + ":" + this.remotePort + "/api.jsb";
+		this.linked = false;
+		this.conn = conn;
+	}
+	
+	private SEntity newEntity() {
+		if (linked) {
+			return controller.newEntity(engine);
+		} else {
+			return controller.newEntity(conn);
+		}
 	}
 	
 	private JSONObject createData() {
@@ -212,7 +238,7 @@ public class RemoteHandler extends SEntity.Handler {
     		if (output.getBoolean("success")) {
     			JSONArray data = output.getJSONArray("data");
     			for (int i = 0; i < data.size(); i++) {
-    				SEntity et = controller.newEntity(engine);
+    				SEntity et = newEntity();
     				et.fromString(data.getString(i));
     				tag.add(et);
     			}
@@ -253,7 +279,7 @@ public class RemoteHandler extends SEntity.Handler {
     		if (output.getBoolean("success")) {
     			JSONArray data = output.getJSONArray("data");
     			for (int i = 0; i < data.size(); i++) {
-    				SEntity et = controller.newEntity(engine);
+    				SEntity et = newEntity();
     				et.fromString(data.getString(i));
     				tag.add(et);
     			}
